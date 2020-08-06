@@ -1,0 +1,13 @@
+{
+  "name": "Adam LaCombe",
+  "short_name": "AdamL",
+  "start_url": "/",
+  "display": "standalone",
+  "icons": [{
+    "src": "assets/icon/blog-solid.svg",
+    "sizes": "any",
+    "type": "image/svg"
+  }],
+  "background_color": "#000000",
+  "theme_color": "#000000"
+}

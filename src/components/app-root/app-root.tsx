@@ -28,6 +28,10 @@ export class AppRoot {
               <a href="https://github.com/adamlacombe" target="_blank" aria-label="Github" rel="noopener" title="Github"><fa-icon type="fab" name="github" /></a>
               <a href="https://dev.to/adamlacombe" target="_blank" aria-label="Dev.to" rel="noopener" title="Dev.to"><fa-icon type="fab" name="dev" /></a>
             </div>
+
+            <div class="sponsor">
+              <iframe src="https://github.com/sponsors/adamlacombe/button" title="Sponsor adamlacombe" height="35" width="107" style={{ border: '0' }} />
+            </div>
           </div>
           <div class="main-body">
             <Router.Switch>

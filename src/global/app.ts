@@ -1,3 +1,4 @@
+import '@adamlacombe/fa-icon';
 export default async () => {
   /**
    * The code to be executed should be placed within a default function that is

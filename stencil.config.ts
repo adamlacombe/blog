@@ -1,6 +1,5 @@
 import { Config } from '@stencil/core';
-
-// https://stenciljs.com/docs/config
+import { sass } from '@stencil/sass';
 
 export const config: Config = {
   globalStyle: 'src/global/app.css',
@@ -19,5 +18,12 @@ export const config: Config = {
       type: 'dist-hydrate-script',
       dir: 'dist/prerender',
     },
+  ],
+  plugins: [
+    sass({
+      injectGlobalPaths: [
+        'src/global/global.scss',
+      ],
+    })
   ]
 };

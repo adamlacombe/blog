@@ -8,7 +8,7 @@ export const config: Config = {
   outputTargets: [
     {
       type: 'www',
-      baseUrl: 'https://myapp.local/',
+      baseUrl: 'https://adamlacombe.com/',
       prerenderConfig: './prerender.config.ts',
       serviceWorker: {
         unregister: true,

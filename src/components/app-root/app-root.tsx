@@ -17,16 +17,16 @@ export class AppRoot {
         <div class="wrapper">
           <div class="header">
             <div class="about">
-              <img src="/assets/profile_photo.jpg" class="profile-photo" />
+              <img src="/assets/profile_photo.jpg" class="profile-photo" alt="Adam LaCombe" />
             </div>
             <h1>Adam LaCombe</h1>
             <h2>Web Developer</h2>
 
             <div class="social">
-              <a href="https://stackoverflow.com/users/9238321/adam-lacombe" target="_blank"><fa-icon type="fab" name="stack-overflow" /></a>
-              <a href="https://twitter.com/adamlacombe" target="_blank"><fa-icon type="fab" name="twitter" /></a>
-              <a href="https://github.com/adamlacombe" target="_blank"><fa-icon type="fab" name="github" /></a>
-              <a href="https://dev.to/adamlacombe" target="_blank"><fa-icon type="fab" name="dev" /></a>
+              <a href="https://stackoverflow.com/users/9238321/adam-lacombe" target="_blank" rel="noopener" aria-label="Stack Overflow" title="Stack Overflow"><fa-icon type="fab" name="stack-overflow" /></a>
+              <a href="https://twitter.com/adamlacombe" target="_blank" aria-label="Twitter" rel="noopener" title="Twitter"><fa-icon type="fab" name="twitter" /></a>
+              <a href="https://github.com/adamlacombe" target="_blank" aria-label="Github" rel="noopener" title="Github"><fa-icon type="fab" name="github" /></a>
+              <a href="https://dev.to/adamlacombe" target="_blank" aria-label="Dev.to" rel="noopener" title="Dev.to"><fa-icon type="fab" name="dev" /></a>
             </div>
           </div>
           <div class="main-body">

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "adam-lacombe"
+  },
+  "targets": {
+    "adam-lacombe": {
+      "hosting": {
+        "adam-lacombe": [
+          "adam-lacombe"
+        ]
+      }
+    }
+  }
+}

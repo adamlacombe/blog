@@ -9,7 +9,8 @@
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
-    "blog": "tsc --p ./scripts && node ./scripts/blog-list"
+    "blog": "tsc --p ./scripts && node ./scripts/blog-list",
+    "deploy": "npm run build && firebase deploy --only hosting:adam-lacombe"
   },
   "dependencies": {
     "@stencil/helmet": "0.3.2"

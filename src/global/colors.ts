@@ -196,5 +196,6 @@ export const colors = {
   cpp: "#f34b7d",
   "AGS Script": "#B9D9FF",
   Dogescript: "#cca760",
-  nesC: "#94B0C7"
+  nesC: "#94B0C7",
+  Dockerfile: "#384d54"
 };

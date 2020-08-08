@@ -1,0 +1,53 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e1e4e8;
+  border-radius: 6px;
+  background: white;
+  padding: 1rem;
+  width: 100%;
+  max-width: 312px;
+  gap: .8em;
+  font-size: .9em;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.description {
+  font-size: 0.9em;
+  color: #586069;
+}
+
+.footer {
+  display: flex;
+  gap: 1em;
+  margin-top: auto;
+
+  color: #586069;
+
+  > div {
+    display: flex;
+    align-items: center;
+    gap: 0.15em;
+  }
+}
+
+.language {
+  width: 12px;
+  height: 12px;
+  border-radius: 100%;
+  background-color: var(--language-color);
+  display: inline-block;
+  top: 1px;
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #0366d6;
+}

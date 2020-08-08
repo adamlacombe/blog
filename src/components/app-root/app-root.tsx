@@ -1,4 +1,4 @@
-import { Component, h, Host, State } from '@stencil/core';
+import { Component, h, Host, Listen, State } from '@stencil/core';
 import { Route } from 'stencil-router-v2';
 import { IGithubProfile } from '../../global/definitions';
 import { getProfile } from '../../global/github.worker';
@@ -19,10 +19,23 @@ export class AppRoot {
     this.profile = await getProfile();
   }
 
+  @Listen("swUpdate", { target: 'window' })
+  async onSWUpdate() {
+    const registration = await navigator.serviceWorker.getRegistration();
+
+    if (!registration || !registration.waiting) {
+      // If there is no registration, this is the first service
+      // worker to be installed. registration.waiting is the one
+      // waiting to be activated.
+      return;
+    }
+
+    registration.waiting.postMessage("skipWaiting");
+    window.location.reload();
+  }
+
   render() {
-    return <Host class={{
-      'menu-open': state.menuIsOpen
-    }}>
+    return <Host class={{ 'menu-open': state.menuIsOpen }}>
       <div class="">
         <div class="wrapper">
           <div class="header">

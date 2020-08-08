@@ -1,5 +1,7 @@
-import { Component, h, Host } from '@stencil/core';
+import { Component, h, Host, State } from '@stencil/core';
 import { Route } from 'stencil-router-v2';
+import { IGithubProfile } from '../../global/definitions';
+import { getProfile } from '../../global/github.worker';
 import { state } from '../../global/store';
 
 const Router = state.router;
@@ -11,15 +13,23 @@ const Router = state.router;
 })
 export class AppRoot {
 
+  @State() profile: IGithubProfile;
+
+  async componentWillLoad() {
+    this.profile = await getProfile();
+  }
+
   render() {
-    return <Host>
+    return <Host class={{
+      'menu-open': state.menuIsOpen
+    }}>
       <div class="">
         <div class="wrapper">
           <div class="header">
             <div class="about">
-              <img src="/assets/profile_photo.jpg" class="profile-photo" alt="Adam LaCombe" />
+              <img src={this.profile.avatar_url} class="profile-photo" alt="Adam LaCombe" />
             </div>
-            <h1>Adam LaCombe</h1>
+            <h1>{this.profile.name}</h1>
             <h2>Web Developer</h2>
 
             <div class="social">
@@ -32,8 +42,32 @@ export class AppRoot {
             <div class="sponsor">
               <iframe src="https://github.com/sponsors/adamlacombe/button" title="Sponsor adamlacombe" height="35" width="107" style={{ border: '0' }} />
             </div>
+
+            <div class="stats-wrapper">
+              <div class="stats-inner">
+                <div>
+                  <div>{this.profile.public_repos}</div>
+                  <div>Repos</div>
+                </div>
+                <div>
+                  <div>{this.profile.public_gists}</div>
+                  <div>Gists</div>
+                </div>
+                <div>
+                  <div>{this.profile.followers}</div>
+                  <div>Followers</div>
+                </div>
+                <div>
+                  <div>{this.profile.following}</div>
+                  <div>Following</div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="main-body">
+            {(!state.menuIsOpen) && <div onClick={() => state.menuIsOpen = true}>
+              <ion-icon name="menu-outline" /> Menu
+            </div>}
             <Router.Switch>
               <Route path={"/"} render={({ page }) => <app-home />} />
               {/* <Route path={match('/blog/:page')} render={({ page }) => <blog-post page={page} />} /> */}

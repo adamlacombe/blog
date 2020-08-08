@@ -17,13 +17,15 @@ h2 {
 
 .wrapper {
   display: grid;
-  grid-template-columns: minmax(250px, 350px) 1fr;
-  min-height: 100vh;
+  grid-template-columns: 1fr;
+  
   width: 100%;
 }
 
 .header {
-  display: flex;
+  display: none;
+
+  position: relative;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -57,9 +59,63 @@ h2 {
 }
 
 fa-icon {
-  display: inline-block;
-
-  width: 1em;
-  height: 1em;
   color: #fff;
+}
+
+.stats-wrapper {
+  position: relative;
+  
+  background: linear-gradient(#3962ffb5, #00000063);
+  width: 100%;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+
+  border-top: 1px solid #6879bd;
+}
+
+.stats-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  gap: 1em;
+
+  padding-left: 1em;
+  padding-right: 1em;
+
+  > div {
+    > div:first-child {
+      font-size: 1.25em;
+    }
+
+    > div:last-child {
+      text-transform: uppercase;
+      font-size: 0.7em;
+    }
+  }
+}
+
+:host(.menu-open) {
+  .header {
+    display: flex;
+  }
+}
+
+
+@media only screen and (min-width: 763px) {
+
+  .wrapper {
+    grid-template-columns: minmax(250px, 350px) 1fr;
+    min-height: 100vh;
+  }
+
+  .main-body {
+    height: 100vh;
+    overflow: auto;
+  }
+
+  .stats-wrapper {
+    position: absolute;
+    bottom: 0;
+  }
 }

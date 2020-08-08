@@ -4,17 +4,19 @@
   "version": "0.0.1",
   "description": "Web dev blog with focus on StencilJS",
   "scripts": {
-    "build": "npm run blog && stencil build --prerender",
+    "build": "npm run blog && npm run github && stencil build --prerender",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "blog": "tsc --p ./scripts && node ./scripts/blog-list",
+    "github": "tsc --p ./scripts && node ./scripts/github-stats",
     "deploy": "npm run build && firebase deploy --only hosting:adam-lacombe"
   },
   "dependencies": {
     "@stencil/helmet": "0.3.2",
-    "@adamlacombe/fa-icon": "1.0.0"
+    "@adamlacombe/fa-icon": "1.0.0",
+    "ionicons": "5.1.2"
   },
   "devDependencies": {
     "@stencil/core": "1.17.2",
@@ -32,7 +34,9 @@
     "stencil-router-v2": "0.5.1-0",
     "typescript": "^3.9.5",
     "workbox-build": "4.3.1",
-    "@stencil/sass": "1.3.2"
+    "@stencil/sass": "1.3.2",
+    "node-fetch": "2.6.0",
+    "@types/node-fetch": "2.5.7"
   },
   "license": "MIT"
 }

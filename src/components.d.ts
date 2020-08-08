@@ -5,10 +5,14 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { IGithubRepo } from "./global/definitions";
 export namespace Components {
     interface AppHome {
     }
     interface AppRoot {
+    }
+    interface RepoCard {
+        "repo": IGithubRepo;
     }
 }
 declare global {
@@ -24,9 +28,16 @@ declare global {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
+    interface HTMLRepoCardElement extends Components.RepoCard, HTMLStencilElement {
+    }
+    var HTMLRepoCardElement: {
+        prototype: HTMLRepoCardElement;
+        new (): HTMLRepoCardElement;
+    };
     interface HTMLElementTagNameMap {
         "app-home": HTMLAppHomeElement;
         "app-root": HTMLAppRootElement;
+        "repo-card": HTMLRepoCardElement;
     }
 }
 declare namespace LocalJSX {
@@ -34,9 +45,13 @@ declare namespace LocalJSX {
     }
     interface AppRoot {
     }
+    interface RepoCard {
+        "repo"?: IGithubRepo;
+    }
     interface IntrinsicElements {
         "app-home": AppHome;
         "app-root": AppRoot;
+        "repo-card": RepoCard;
     }
 }
 export { LocalJSX as JSX };
@@ -45,6 +60,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "repo-card": LocalJSX.RepoCard & JSXBase.HTMLAttributes<HTMLRepoCardElement>;
         }
     }
 }

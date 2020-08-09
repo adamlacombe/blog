@@ -12,29 +12,27 @@ export class RepoCard {
   @Prop() repo: IGithubRepo;
 
   render() {
-    return <Host style={{
-      '--language-color': colors[this.repo.language]
-    }}>
-      <div class="name">
+    return <Host style={{ '--language-color': colors[this.repo.language] }} itemscope itemtype="http://schema.org/SoftwareSourceCode">
+      <div class="name" itemprop="name">
         <fa-icon type="fab" name="git-square" />
-        <a href={this.repo.html_url} target="_blank" rel="noopener">{this.repo.full_name}</a>
+        <a href={this.repo.html_url} target="_blank" rel="noopener" itemprop="url">{this.repo.full_name}</a>
       </div>
-      <div class="description">
+      <div class="description" itemprop="description">
         {this.repo.description}
       </div>
       <div class="footer">
         {(this.repo.language && this.repo.language.length > 0) && <div>
           <span class="language"></span>
-          <div>
+          <div itemprop="programmingLanguage">
             {this.repo.language}
           </div>
         </div>}
         <div>
-          <ion-icon name="star-outline"></ion-icon>
+          <ion-icon name="star-outline" />
           <div>{this.repo.stargazers_count}</div>
         </div>
         <div>
-          <ion-icon name="git-branch-outline"></ion-icon>
+          <ion-icon name="git-branch-outline" />
           <div>{this.repo.forks_count}</div>
         </div>
       </div>

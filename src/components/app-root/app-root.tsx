@@ -38,18 +38,26 @@ export class AppRoot {
     return <Host class={{ 'menu-open': state.menuIsOpen }}>
       <div class="">
         <div class="wrapper">
-          <div class="header">
+          <div class="header" itemscope itemtype="http://schema.org/Person">
             <div class="about">
-              <img src={this.profile.avatar_url} class="profile-photo" alt="Adam LaCombe" />
+              <img src={this.profile.avatar_url} class="profile-photo" alt="Adam LaCombe" itemprop="image" />
             </div>
-            <h1>{this.profile.name}</h1>
-            <h2>Web Developer</h2>
+            <h1 itemprop="givenName">{this.profile.name}</h1>
+            <h2 itemprop="jobTitle">Web Developer</h2>
 
             <div class="social">
-              <a href="https://stackoverflow.com/users/9238321/adam-lacombe" target="_blank" rel="noopener" aria-label="Stack Overflow" title="Stack Overflow"><ion-icon name="logo-stackoverflow" /></a>
-              <a href="https://twitter.com/adamlacombe" target="_blank" aria-label="Twitter" rel="noopener" title="Twitter"><fa-icon type="fab" name="twitter" /></a>
-              <a href="https://github.com/adamlacombe" target="_blank" aria-label="Github" rel="noopener" title="Github"><fa-icon type="fab" name="github" /></a>
-              <a href="https://dev.to/adamlacombe" target="_blank" aria-label="Dev.to" rel="noopener" title="Dev.to"><fa-icon type="fab" name="dev" /></a>
+              <a itemprop="sameAs" href="https://stackoverflow.com/users/9238321/adam-lacombe" target="_blank" rel="noopener" aria-label="Stack Overflow" title="Stack Overflow">
+                <ion-icon name="logo-stackoverflow" />
+              </a>
+              <a itemprop="sameAs" href="https://twitter.com/adamlacombe" target="_blank" aria-label="Twitter" rel="noopener" title="Twitter">
+                <fa-icon type="fab" name="twitter" />
+              </a>
+              <a itemprop="sameAs" href="https://github.com/adamlacombe" target="_blank" aria-label="Github" rel="noopener" title="Github">
+                <fa-icon type="fab" name="github" />
+              </a>
+              <a itemprop="sameAs" href="https://dev.to/adamlacombe" target="_blank" aria-label="Dev.to" rel="noopener" title="Dev.to">
+                <fa-icon type="fab" name="dev" />
+              </a>
             </div>
 
             <div class="sponsor">

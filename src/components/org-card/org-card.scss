@@ -7,6 +7,10 @@
   padding: 1rem;
   gap: 0.8em;
   font-size: 0.9em;
+
+  // https://web.dev/content-visibility/
+  content-visibility: auto;
+  contain-intrinsic-size: 115px;
 }
 
 .wrap {

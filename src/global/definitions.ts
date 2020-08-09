@@ -81,9 +81,9 @@ export interface IGithubProfile {
   company: string;
   blog: string;
   location: string;
-  email: null;
-  hireable: null;
-  bio: null;
+  email: string;
+  hireable: string;
+  bio: string;
   twitter_username: string;
   public_repos: number;
   public_gists: number;
@@ -101,7 +101,7 @@ export interface IGithubRepo {
   private: boolean;
   owner: IGithubOwner;
   html_url: string;
-  description: null;
+  description: string;
   fork: boolean;
   url: string;
   forks_url: string;
@@ -147,7 +147,7 @@ export interface IGithubRepo {
   ssh_url: string;
   clone_url: string;
   svn_url: string;
-  homepage: null;
+  homepage: string;
   size: number;
   stargazers_count: number;
   watchers_count: number;
@@ -158,7 +158,7 @@ export interface IGithubRepo {
   has_wiki: boolean;
   has_pages: boolean;
   forks_count: number;
-  mirror_url: null;
+  mirror_url: string;
   archived: boolean;
   disabled: boolean;
   open_issues_count: number;
@@ -196,4 +196,51 @@ export interface IGithubOwner {
   received_events_url: string;
   type: string;
   site_admin: boolean;
+}
+
+export interface IGithubUserOrg {
+  login: string;
+  id: number;
+  node_id: string;
+  url: string;
+  repos_url: string;
+  events_url: string;
+  hooks_url: string;
+  issues_url: string;
+  members_url: string;
+  public_members_url: string;
+  avatar_url: string;
+  description: string;
+}
+
+export interface IGithubOrg {
+  login: string;
+  id: number;
+  node_id: string;
+  url: string;
+  repos_url: string;
+  events_url: string;
+  hooks_url: string;
+  issues_url: string;
+  members_url: string;
+  public_members_url: string;
+  avatar_url: string;
+  description: string;
+  name: string;
+  company: string;
+  blog: string;
+  location: string;
+  email: string;
+  twitter_username: string;
+  is_verified: boolean;
+  has_organization_projects: boolean;
+  has_repository_projects: boolean;
+  public_repos: number;
+  public_gists: number;
+  followers: number;
+  following: number;
+  html_url: string;
+  created_at: Date;
+  updated_at: Date;
+  type: string;
 }

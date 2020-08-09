@@ -18,7 +18,7 @@ h2 {
 .wrapper {
   display: grid;
   grid-template-columns: 1fr;
-  
+
   width: 100%;
 }
 
@@ -29,11 +29,25 @@ h2 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   gap: 0.5em;
 
-  background: linear-gradient(#9c1fe6d1, #0b33a5);
   color: #fff;
+
+  background: linear-gradient(#9c0886, #0008ffad);
+  background-size: 200% 200%;
+  animation: AnimationName 33s ease infinite;
+}
+
+@keyframes AnimationName {
+  0% {
+    background-position: 49% 0%;
+  }
+  50% {
+    background-position: 52% 100%;
+  }
+  100% {
+    background-position: 49% 0%;
+  }
 }
 
 .social {
@@ -64,13 +78,13 @@ fa-icon {
 
 .stats-wrapper {
   position: relative;
-  
-  background: linear-gradient(#3962ffb5, #00000063);
+
+  background: rgb(0 0 0 / 21%);
   width: 100%;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
 
-  border-top: 1px solid #6879bd;
+  border-top: 1px solid rgb(0 0 0 / 57%);
 }
 
 .stats-inner {
@@ -83,7 +97,11 @@ fa-icon {
   padding-left: 1em;
   padding-right: 1em;
 
-  > div {
+  > a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+
     > div:first-child {
       font-size: 1.25em;
     }
@@ -101,9 +119,7 @@ fa-icon {
   }
 }
 
-
 @media only screen and (min-width: 763px) {
-
   .wrapper {
     grid-template-columns: minmax(250px, 350px) 1fr;
     min-height: 100vh;

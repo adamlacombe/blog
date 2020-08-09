@@ -46,7 +46,7 @@ export class AppRoot {
             <h2>Web Developer</h2>
 
             <div class="social">
-              <a href="https://stackoverflow.com/users/9238321/adam-lacombe" target="_blank" rel="noopener" aria-label="Stack Overflow" title="Stack Overflow"><fa-icon type="fab" name="stack-overflow" /></a>
+              <a href="https://stackoverflow.com/users/9238321/adam-lacombe" target="_blank" rel="noopener" aria-label="Stack Overflow" title="Stack Overflow"><ion-icon name="logo-stackoverflow" /></a>
               <a href="https://twitter.com/adamlacombe" target="_blank" aria-label="Twitter" rel="noopener" title="Twitter"><fa-icon type="fab" name="twitter" /></a>
               <a href="https://github.com/adamlacombe" target="_blank" aria-label="Github" rel="noopener" title="Github"><fa-icon type="fab" name="github" /></a>
               <a href="https://dev.to/adamlacombe" target="_blank" aria-label="Dev.to" rel="noopener" title="Dev.to"><fa-icon type="fab" name="dev" /></a>
@@ -58,22 +58,22 @@ export class AppRoot {
 
             <div class="stats-wrapper">
               <div class="stats-inner">
-                <div>
+                <a href="https://github.com/adamlacombe?tab=repositories&type=source" target="_blank" rel="noopener" aria-label="Repos" title="Repos">
                   <div>{this.profile.public_repos}</div>
                   <div>Repos</div>
-                </div>
-                <div>
+                </a>
+                <a href="https://gist.github.com/adamlacombe" target="_blank" rel="noopener" aria-label="Gists" title="Gists">
                   <div>{this.profile.public_gists}</div>
                   <div>Gists</div>
-                </div>
-                <div>
+                </a>
+                <a href="https://github.com/adamlacombe?tab=followers" target="_blank" rel="noopener" aria-label="Followers" title="Followers">
                   <div>{this.profile.followers}</div>
                   <div>Followers</div>
-                </div>
-                <div>
+                </a>
+                <a href="https://github.com/adamlacombe?tab=following" target="_blank" rel="noopener" aria-label="Following" title="Following">
                   <div>{this.profile.following}</div>
                   <div>Following</div>
-                </div>
+                </a>
               </div>
             </div>
           </div>

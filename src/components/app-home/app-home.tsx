@@ -1,19 +1,21 @@
 import { Component, h, State } from '@stencil/core';
 import Helmet from '@stencil/helmet';
-import { IGithubRepo } from '../../global/definitions';
-import { getRepos } from '../../global/github.worker';
+import { IGithubOrg, IGithubRepo } from '../../global/definitions';
+import { getOrgs, getRepos } from '../../global/github.worker';
 
 @Component({
   tag: 'app-home',
-  styleUrl: 'app-home.css',
+  styleUrl: 'app-home.scss',
   shadow: true
 })
 export class AppHome {
 
   @State() repos: IGithubRepo[];
+  @State() orgs: IGithubOrg[];
 
   async componentWillLoad() {
     this.repos = await getRepos();
+    this.orgs = await getOrgs();
   }
 
   render() {
@@ -36,9 +38,19 @@ export class AppHome {
           <img src="https://img.shields.io/badge/-NodeJS-026e00?style=for-the-badge&logo=Node.js&logoColor=fff" alt="NodeJS" />
         </p> */}
 
-        {(this.repos && this.repos.length > 0) && <div class="repos">
-          {this.repos.map(repo => <repo-card repo={repo} />)}
-        </div>}
+        {(this.orgs && this.orgs.length > 0) && <article>
+          <h1>Organizations</h1>
+          <div class="orgs">
+            {this.orgs.map(org => <org-card org={org} />)}
+          </div>
+        </article>}
+
+        {(this.repos && this.repos.length > 0) && <article>
+          <h1>Repositories</h1>
+          <div class="repos">
+            {this.repos.filter(el => el.fork === false).map(repo => <repo-card repo={repo} />)}
+          </div>
+        </article>}
       </div>
     </host>;
   }

@@ -12,35 +12,33 @@ export class RepoCard {
   @Prop() repo: IGithubRepo;
 
   render() {
-    return (
-      <Host style={{
-        '--language-color': colors[this.repo.language]
-      }}>
-        <div class="name">
-          <fa-icon type="fab" name="git-square" />
-          <a href={this.repo.html_url} target="_blank" rel="noopener">{this.repo.name}</a>
-        </div>
-        <div class="description">
-          {this.repo.description}
-        </div>
-        <div class="footer">
-          {(this.repo.language && this.repo.language.length > 0) && <div>
-            <span class="language"></span>
-            <div>
-              {this.repo.language}
-            </div>
-          </div>}
+    return <Host style={{
+      '--language-color': colors[this.repo.language]
+    }}>
+      <div class="name">
+        <fa-icon type="fab" name="git-square" />
+        <a href={this.repo.html_url} target="_blank" rel="noopener">{this.repo.full_name}</a>
+      </div>
+      <div class="description">
+        {this.repo.description}
+      </div>
+      <div class="footer">
+        {(this.repo.language && this.repo.language.length > 0) && <div>
+          <span class="language"></span>
           <div>
-            <ion-icon name="star-outline"></ion-icon>
-            <div>{this.repo.stargazers_count}</div>
+            {this.repo.language}
           </div>
-          <div>
-            <ion-icon name="git-branch-outline"></ion-icon>
-            <div>{this.repo.forks_count}</div>
-          </div>
+        </div>}
+        <div>
+          <ion-icon name="star-outline"></ion-icon>
+          <div>{this.repo.stargazers_count}</div>
         </div>
-      </Host>
-    );
+        <div>
+          <ion-icon name="git-branch-outline"></ion-icon>
+          <div>{this.repo.forks_count}</div>
+        </div>
+      </div>
+    </Host>;
   }
 
 }

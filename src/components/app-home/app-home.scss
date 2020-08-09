@@ -1,0 +1,24 @@
+:host {
+  display: block;
+  padding: 1em;
+}
+
+.repos,
+.orgs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5em;
+  margin-bottom: 1em;
+}
+
+@media only screen and (min-width: 394px) {
+  .orgs {
+    grid-template-columns: repeat(auto-fit, minmax(362px, 1fr));
+  }
+}
+
+@media only screen and (min-width: 344px) {
+  .repos {
+    grid-template-columns: repeat(auto-fit, minmax(312px, 1fr));
+  }
+}

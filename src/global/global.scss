@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto&display=swap');
+
 .container {
   width: 100%;
   margin-right: auto;
@@ -34,4 +36,8 @@ fa-icon {
   width: 1em;
   height: 1em;
   color: inherit;
+}
+
+h1, h2, h3, h4 {
+  margin: 0 0 .2em 0;
 }

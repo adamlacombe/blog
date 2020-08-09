@@ -5,11 +5,14 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { IGithubRepo } from "./global/definitions";
+import { IGithubOrg, IGithubRepo } from "./global/definitions";
 export namespace Components {
     interface AppHome {
     }
     interface AppRoot {
+    }
+    interface OrgCard {
+        "org": IGithubOrg;
     }
     interface RepoCard {
         "repo": IGithubRepo;
@@ -28,6 +31,12 @@ declare global {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
+    interface HTMLOrgCardElement extends Components.OrgCard, HTMLStencilElement {
+    }
+    var HTMLOrgCardElement: {
+        prototype: HTMLOrgCardElement;
+        new (): HTMLOrgCardElement;
+    };
     interface HTMLRepoCardElement extends Components.RepoCard, HTMLStencilElement {
     }
     var HTMLRepoCardElement: {
@@ -37,6 +46,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "app-home": HTMLAppHomeElement;
         "app-root": HTMLAppRootElement;
+        "org-card": HTMLOrgCardElement;
         "repo-card": HTMLRepoCardElement;
     }
 }
@@ -45,12 +55,16 @@ declare namespace LocalJSX {
     }
     interface AppRoot {
     }
+    interface OrgCard {
+        "org"?: IGithubOrg;
+    }
     interface RepoCard {
         "repo"?: IGithubRepo;
     }
     interface IntrinsicElements {
         "app-home": AppHome;
         "app-root": AppRoot;
+        "org-card": OrgCard;
         "repo-card": RepoCard;
     }
 }
@@ -60,6 +74,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "org-card": LocalJSX.OrgCard & JSXBase.HTMLAttributes<HTMLOrgCardElement>;
             "repo-card": LocalJSX.RepoCard & JSXBase.HTMLAttributes<HTMLRepoCardElement>;
         }
     }

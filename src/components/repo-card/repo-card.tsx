@@ -15,14 +15,14 @@ export class RepoCard {
     return <Host style={{ '--language-color': colors[this.repo.language] }} itemscope itemtype="http://schema.org/SoftwareSourceCode">
       <div class="name" itemprop="name">
         <fa-icon type="fab" name="git-square" />
-        <a href={this.repo.html_url} target="_blank" rel="noopener" itemprop="url">{this.repo.full_name}</a>
+        <a href={this.repo.html_url} target="_blank" rel="noopener" itemprop="url">{(this.repo.owner.login === "adamlacombe") ? this.repo.name : this.repo.full_name}</a>
       </div>
       <div class="description" itemprop="description">
         {this.repo.description}
       </div>
       <div class="footer">
         {(this.repo.language && this.repo.language.length > 0) && <div>
-          <span class="language"></span>
+          <span class="language" />
           <div itemprop="programmingLanguage">
             {this.repo.language}
           </div>

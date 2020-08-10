@@ -1,9 +1,9 @@
 import { Component, h, Host, Listen, State } from '@stencil/core';
-
 import { Route } from 'stencil-router-v2';
 import { IGithubProfile } from '../../global/definitions';
 import { getProfile } from '../../global/github.worker';
 import { Router, state } from '../../global/store';
+
 
 @Component({
   tag: 'app-root',
@@ -39,7 +39,16 @@ export class AppRoot {
         <div class="wrapper">
           <div class="header" itemscope itemtype="http://schema.org/Person">
             <div class="about">
-              <img src={this.profile.avatar_url} class="profile-photo" alt="Adam LaCombe" itemprop="image" />
+              <picture>
+                {(this.profile.avatar_url.optimized) && <source type={`image/webp`} srcSet={this.profile.avatar_url.optimized} />}
+                <img loading={'lazy'}
+                  width={this.profile.avatar_url.dimensions.width}
+                  height={this.profile.avatar_url.dimensions.height}
+                  src={this.profile.avatar_url.original}
+                  class="profile-photo"
+                  alt="Adam LaCombe"
+                  itemprop="image" />
+              </picture>
             </div>
             <h1 itemprop="givenName">{this.profile.name}</h1>
             <h2 itemprop="jobTitle">Web Developer</h2>

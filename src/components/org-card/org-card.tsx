@@ -13,7 +13,17 @@ export class OrgCard {
   render() {
     return <Host itemscope itemtype="http://schema.org/Organization">
       <div class="wrap">
-        <div><img src={this.org.avatar_url} alt={`${this.org.name}'s logo`} itemprop="logo" /></div>
+        <div>
+          <picture>
+            {(this.org.avatar_url.optimized) && <source type={`image/webp`} srcSet={this.org.avatar_url.optimized} />}
+            <img loading={'lazy'}
+              width={this.org.avatar_url.dimensions.width}
+              height={this.org.avatar_url.dimensions.height}
+              src={this.org.avatar_url.original}
+              alt={`${this.org.name}'s logo`}
+              itemprop="logo" />
+          </picture>
+        </div>
         <div>
           <div class="name" itemprop="name">
             <ion-icon name="business-outline" />
@@ -25,7 +35,7 @@ export class OrgCard {
         </div>
       </div>
       <div class="footer">
-        <a href={this.org.repos_url} target="_blank" rel="noopener" aria-label="Repos" title="Repos">
+        <a href={`${this.org.html_url}?type=source`} target="_blank" rel="noopener" aria-label="Repos" title="Repos">
           <ion-icon name="logo-github" />
           <div>{this.org.public_repos}</div>
         </a>

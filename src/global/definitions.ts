@@ -58,11 +58,20 @@ export interface BlogPostInterface {
   filePath?: string;
 }
 
+export interface IImage {
+  original: string;
+  optimized?: string | null;
+  dimensions: {
+    width: number;
+    height: number;
+  }
+}
+
 export interface IGithubProfile {
   login: string;
   id: number;
   node_id: string;
-  avatar_url: string;
+  avatar_url?: IImage;
   gravatar_id: string;
   url: string;
   html_url: string;
@@ -224,7 +233,7 @@ export interface IGithubOrg {
   issues_url: string;
   members_url: string;
   public_members_url: string;
-  avatar_url: string;
+  avatar_url?: IImage;
   description: string;
   name: string;
   company: string;

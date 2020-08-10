@@ -10,7 +10,14 @@
     "issues_url": "https://api.github.com/orgs/edgeworkscreative/issues",
     "members_url": "https://api.github.com/orgs/edgeworkscreative/members{/member}",
     "public_members_url": "https://api.github.com/orgs/edgeworkscreative/public_members{/member}",
-    "avatar_url": "/assets/github/39106318.png",
+    "avatar_url": {
+      "original": "/assets/github/39106318.jpeg",
+      "optimized": null,
+      "dimensions": {
+        "width": 85,
+        "height": 85
+      }
+    },
     "description": "Edgeworks Creative is a Vermont web based design firm specializing in print, web, SEO, and SEM to our clients in Vermont and beyond.",
     "name": "Edgeworks Creative",
     "company": null,
@@ -41,7 +48,14 @@
     "issues_url": "https://api.github.com/orgs/InteractiveTraining/issues",
     "members_url": "https://api.github.com/orgs/InteractiveTraining/members{/member}",
     "public_members_url": "https://api.github.com/orgs/InteractiveTraining/public_members{/member}",
-    "avatar_url": "/assets/github/44031825.png",
+    "avatar_url": {
+      "original": "/assets/github/44031825.png",
+      "optimized": "/assets/github/44031825.webp",
+      "dimensions": {
+        "width": 85,
+        "height": 85
+      }
+    },
     "description": "Interactive.Training provides tools for instructor-led and self-serve digital training.",
     "name": "Interactive.Training",
     "company": null,

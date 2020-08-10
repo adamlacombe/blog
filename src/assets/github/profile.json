@@ -2,7 +2,14 @@
   "login": "adamlacombe",
   "id": 2395597,
   "node_id": "MDQ6VXNlcjIzOTU1OTc=",
-  "avatar_url": "/assets/github/2395597.png",
+  "avatar_url": {
+    "original": "/assets/github/2395597.jpeg",
+    "optimized": null,
+    "dimensions": {
+      "width": 180,
+      "height": 180
+    }
+  },
   "gravatar_id": "",
   "url": "https://api.github.com/users/adamlacombe",
   "html_url": "https://github.com/adamlacombe",

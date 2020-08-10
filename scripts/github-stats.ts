@@ -1,21 +1,43 @@
-import { createWriteStream, ensureDir, writeFile } from "fs-extra";
+import { ensureDir, writeFile } from "fs-extra";
 import fetch from 'node-fetch';
+import sharp from 'sharp';
 import { IGithubOrg, IGithubProfile, IGithubRepo, IGithubUserOrg } from "../src/global/definitions";
 
-const util = require('util');
-const streamPipeline = util.promisify(require('stream').pipeline);
+const { promisify } = require('util');
+const sizeOf = promisify(require('image-size'));
 
 const DESTINATION_DIR = './src/assets/github';
 const GITHUB_PROFILE_FILE = './src/assets/github/profile.json';
 const GITHUB_REPOS_FILE = './src/assets/github/repos.json';
 const GITHUB_ORGS_FILE = './src/assets/github/orgs.json';
+const PROFILE_AVATAR_WIDTH = 180;
+const ORG_AVATAR_WIDTH = 85;
 
-async function downloadImage(url: string) {
-  let fileName = `${new URL(url).pathname.replace('/u/', '')}.png`;
+async function downloadImage(url: string, width: number) {
+  let fileName = `${new URL(url).pathname.replace('/u/', '')}`;
   const response = await fetch(url);
   if (!response.ok) throw new Error(`unexpected response ${response.statusText}`);
-  await streamPipeline(response.body, createWriteStream(`./src/assets/github/${fileName}`));
-  return `/assets/github/${fileName}`;
+
+  const type = response.headers.get('content-type').replace('image/', '');
+  const buffer = await response.buffer();
+  const originalFile = `${DESTINATION_DIR}/${fileName}.${type}`;
+  const optimizedFile = (type !== "jpeg") ? `${DESTINATION_DIR}/${fileName}.webp` : null;
+
+  await sharp(buffer).resize({ width: width, height: null }).toFile(originalFile);
+  const dimensions = await sizeOf(originalFile);
+
+  if (type !== "jpeg") {
+    await sharp(originalFile).webp({ quality: 90 }).toFile(optimizedFile);
+  }
+
+  return {
+    original: originalFile.replace('./src', ''),
+    optimized: (optimizedFile) ? optimizedFile.replace('./src', '') : null,
+    dimensions: {
+      width: dimensions.width,
+      height: dimensions.height
+    }
+  };
 }
 
 (async function () {
@@ -26,7 +48,7 @@ async function downloadImage(url: string) {
   const profileReq = await fetch(`https://api.github.com/users/adamlacombe`);
   const profile: IGithubProfile = await profileReq.json();
 
-  profile.avatar_url = await downloadImage(profile.avatar_url);
+  profile.avatar_url = await downloadImage(profile.avatar_url as any, PROFILE_AVATAR_WIDTH);
 
   await writeFile(GITHUB_PROFILE_FILE, JSON.stringify(profile, null, 2), {
     encoding: 'utf8'
@@ -47,7 +69,7 @@ async function downloadImage(url: string) {
     const res: IGithubOrg = await orgReq.json();
     return {
       ...res,
-      avatar_url: await downloadImage(res.avatar_url),
+      avatar_url: await downloadImage(res.avatar_url as any, ORG_AVATAR_WIDTH),
     } as IGithubOrg
   }));
 

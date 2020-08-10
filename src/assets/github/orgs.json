@@ -35,7 +35,8 @@
     "html_url": "https://github.com/edgeworkscreative",
     "created_at": "2018-05-09T00:08:29Z",
     "updated_at": "2020-08-09T14:45:37Z",
-    "type": "Organization"
+    "type": "Organization",
+    "themeColor": "#000"
   },
   {
     "login": "InteractiveTraining",
@@ -73,6 +74,7 @@
     "html_url": "https://github.com/InteractiveTraining",
     "created_at": "2018-10-10T15:29:25Z",
     "updated_at": "2020-08-09T13:39:46Z",
-    "type": "Organization"
+    "type": "Organization",
+    "themeColor": "#f79620"
   }
 ]

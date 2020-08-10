@@ -9,6 +9,11 @@
   grid-template-columns: 1fr;
   gap: 1.5em;
   margin-bottom: 1em;
+
+  > *:hover {
+    transition: 0.25s all ease-in-out;
+    box-shadow: 0 2px 14px 0px rgba(0, 0, 0, 0.1);
+  }
 }
 
 @media only screen and (min-width: 394px) {

@@ -12,7 +12,7 @@ export class RepoCard {
   @Prop() repo: IGithubRepo;
 
   render() {
-    return <Host style={{ '--language-color': colors[this.repo.language] }} itemscope itemtype="http://schema.org/SoftwareSourceCode">
+    return <Host style={{ '--language-color': (colors[this.repo.language]) ? colors[this.repo.language] : null }} itemscope itemtype="http://schema.org/SoftwareSourceCode">
       <div class="name" itemprop="name">
         <fa-icon type="fab" name="git-square" />
         <a href={this.repo.html_url} target="_blank" rel="noopener" itemprop="url">{(this.repo.owner.login === "adamlacombe") ? this.repo.name : this.repo.full_name}</a>

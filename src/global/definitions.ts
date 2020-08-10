@@ -252,4 +252,5 @@ export interface IGithubOrg {
   created_at: Date;
   updated_at: Date;
   type: string;
+  themeColor?: string;
 }

@@ -2,7 +2,8 @@
   display: flex;
   flex-direction: column;
   border: 1px solid #e1e4e8;
-  border-radius: 6px;
+  border-top: 4px solid var(--theme-color, #ccc);
+  border-radius: 4px;
   background: white;
   padding: 1rem;
   gap: 0.8em;

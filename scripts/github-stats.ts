@@ -67,9 +67,14 @@ async function downloadImage(url: string, width: number) {
   const orgs: IGithubOrg[] = await Promise.all(userOrgs.map(async org => {
     const orgReq = await fetch(org.url);
     const res: IGithubOrg = await orgReq.json();
+
+    let themeColor = "#000";
+    if (res.login === "InteractiveTraining") themeColor = "#f79620";
+
     return {
       ...res,
       avatar_url: await downloadImage(res.avatar_url as any, ORG_AVATAR_WIDTH),
+      themeColor: themeColor
     } as IGithubOrg
   }));
 

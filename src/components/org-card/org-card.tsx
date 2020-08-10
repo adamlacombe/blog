@@ -11,7 +11,7 @@ export class OrgCard {
   @Prop() org: IGithubOrg;
 
   render() {
-    return <Host itemscope itemtype="http://schema.org/Organization">
+    return <Host style={{ '--theme-color': this.org.themeColor }} itemscope itemtype="http://schema.org/Organization">
       <div class="wrap">
         <div>
           <picture>

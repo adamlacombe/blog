@@ -1,10 +1,9 @@
 import { Component, h, Host, Listen, State } from '@stencil/core';
+
 import { Route } from 'stencil-router-v2';
 import { IGithubProfile } from '../../global/definitions';
 import { getProfile } from '../../global/github.worker';
-import { state } from '../../global/store';
-
-const Router = state.router;
+import { Router, state } from '../../global/store';
 
 @Component({
   tag: 'app-root',

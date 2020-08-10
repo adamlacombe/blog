@@ -36,7 +36,9 @@
     "workbox-build": "4.3.1",
     "@stencil/sass": "1.3.2",
     "node-fetch": "2.6.0",
-    "@types/node-fetch": "2.5.7"
+    "@types/node-fetch": "2.5.7",
+    "@types/google.analytics": "0.0.40",
+    "@types/gtag.js": "0.0.3"
   },
   "license": "MIT"
 }

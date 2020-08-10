@@ -1,18 +1,29 @@
 import { createStore } from "@stencil/store";
-import { createRouter, Router } from 'stencil-router-v2';
+import { createRouter } from 'stencil-router-v2';
 
 export interface IState {
-  router: Router;
   menuIsOpen: boolean;
+  isLive: boolean;
 }
 
 export const store = createStore<IState>({
-  router: createRouter({
-    parseURL: (url: URL) => {
-      return decodeURI(url.pathname);
-    }
-  }),
-  menuIsOpen: true
+  menuIsOpen: true,
+  isLive: window.location.origin.includes('localhost')
 });
 
 export const state = window['state'] = store.state;
+
+export const Router = window['Router'] = createRouter({
+  parseURL: (url: URL) => {
+    return decodeURI(url.pathname);
+  }
+});
+
+Router.onChange('url', (url) => {
+  // hacky but lets wait 1s before grabbing page title
+  setTimeout(() => {
+    (window as any).gtag('config', 'UA-44023830-34', {
+      'page_path': url.pathname
+    });
+  }, 1000);
+});

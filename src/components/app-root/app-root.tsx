@@ -1,5 +1,5 @@
 import { Component, h, Host, Listen, State } from '@stencil/core';
-import { Route } from 'stencil-router-v2';
+import { match, Route } from 'stencil-router-v2';
 import { IGithubProfile } from '../../global/definitions';
 import { getProfile } from '../../global/github.worker';
 import { Router, state } from '../../global/store';
@@ -99,7 +99,7 @@ export class AppRoot {
             </div>}
             <Router.Switch>
               <Route path={"/"} render={({ page }) => <app-home />} />
-              {/* <Route path={match('/blog/:page')} render={({ page }) => <blog-post page={page} />} /> */}
+              <Route path={match('/blog/:page')} render={({ page }) => <blog-post page={`/blog/${page}`} />} />
 
             </Router.Switch>
           </div>

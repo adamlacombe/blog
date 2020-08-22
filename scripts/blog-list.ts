@@ -27,7 +27,7 @@ import marked from 'marked';
 import glob from 'glob';
 import { promisify } from 'util';
 import path from 'path';
-import {readFile, writeFile, ensureDir, mkdirp } from 'fs-extra';
+import { readFile, writeFile, ensureDir, mkdirp } from 'fs-extra';
 
 import { changeCodeCreation } from './markdown-renderer';
 import frontMatter from 'front-matter';
@@ -41,10 +41,10 @@ const SOURCE_DIR = './src/blog';
 const BLOG_LIST_FILE = './src/assets/blog/list.json';
 
 
-(async function() {
+(async function () {
   try {
     await ensureDir(DESTINATION_DIR);
-  } catch (e) {}
+  } catch (e) { }
 
   console.log(`running glob: ${SOURCE_DIR}/**/*.md`);
   const files = await globAsync(`${SOURCE_DIR}/**/*.md`, {});
@@ -89,7 +89,7 @@ const BLOG_LIST_FILE = './src/assets/blog/list.json';
         hypertext: convertHtmlToHypertextData(htmlContents)
       };
 
-      data.title = `Stencil Blog - ${data.title.trim()}`;
+      data.title = `Adam LaCombe - ${data.title.trim()}`;
 
       await writeFile(destinationFileName, JSON.stringify(data), {
         encoding: 'utf8'

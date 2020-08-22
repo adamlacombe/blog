@@ -28,5 +28,9 @@ export const config: Config = {
         'src/global/global.scss',
       ],
     })
-  ]
+  ],
+  enableCache: false,
+  devServer: {
+    openBrowser: false
+  }
 };

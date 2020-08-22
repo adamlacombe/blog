@@ -1,6 +1,7 @@
 export const colors = {
   Mercury: "#ff2b2b",
   TypeScript: "#2b7489",
+  TSX: "#2b7489",
   PureBasic: "#5a6986",
   "Objective-C++": "#6866fb",
   Self: "#0579aa",

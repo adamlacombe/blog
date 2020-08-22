@@ -149,6 +149,9 @@ export function collectHeadingMetadata(renderer: marked.Renderer, metadata: Mark
 
 export function changeCodeCreation(renderer: marked.Renderer) {
   function highlight(code: string, lang?: string) {
+    if (lang && lang === "html") {
+      lang = "markup";
+    }
     if (lang != null && languages.indexOf(lang) !== -1) {
       return Prism.highlight(code, Prism.languages[lang], lang);
     }
@@ -171,8 +174,13 @@ export function changeCodeCreation(renderer: marked.Renderer) {
       `;
     }
 
+    let languageName = lang;
+    if (lang && lang === "html") {
+      lang = "markup";
+    }
+
     return `
-  <highlight-code>
+  <highlight-code language="${escape(languageName)}">
     <pre class="language-${escape(lang)}"><code class="language-${escape(lang)}">${escaped ? code : escape(code)}</code></pre>
   </highlight-code>
   `;

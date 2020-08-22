@@ -68,6 +68,10 @@ const BLOG_LIST_FILE = './src/assets/blog/list.json';
 
       changeCodeCreation(renderer);
 
+      if (parsedMarkdown.attributes.tags) {
+        parsedMarkdown.attributes.tags = parsedMarkdown.attributes.tags.split(',').map(v => v.trim());
+      }
+
       allBlogPosts.push({
         ...parsedMarkdown.attributes,
         filePath: path.join('/assets/blog/', path.basename(jsonFileName, '.md') + '.json')

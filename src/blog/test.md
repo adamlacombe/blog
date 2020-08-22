@@ -1,10 +1,11 @@
 ---
-title: Test
+title: 15 Docker Commands Beginners Should Know
 date: August 6, 2020
 url: /blog/test
 author: Adam LaCombe
 twitter: adamlacombe
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada dolor id pretium euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget velit pretium, semper dolor ac, dignissim justo.
+tags: docker, bash, test, typescript
 img: /assets/blog/images/docker-commands.jpg
 ---
 

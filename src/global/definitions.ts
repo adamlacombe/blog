@@ -53,6 +53,7 @@ export interface BlogPostInterface {
   url: string;
   author: string;
   twitter: string;
+  tags: string[];
   description: string;
   img: string;
   filePath?: string;

@@ -27,3 +27,11 @@ Router.onChange('url', (url) => {
     });
   }, 1000);
 });
+
+export const clickRoutableLink = (e: MouseEvent) => {
+  const a: HTMLAnchorElement = e.composedPath().find((el: HTMLElement) => el && el.localName === "a") as any;
+  if (a) {
+    e.preventDefault();
+    Router.push(new URL(a.href).pathname);
+  }
+}

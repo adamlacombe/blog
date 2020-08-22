@@ -1,6 +1,7 @@
 import { Component, h, State } from '@stencil/core';
 import Helmet from '@stencil/helmet';
-import { IGithubOrg, IGithubRepo } from '../../global/definitions';
+import blogContent from '../../assets/blog/list.json';
+import { BlogPostInterface, IGithubOrg, IGithubRepo } from '../../global/definitions';
 import { getOrgs, getRepos } from '../../global/github.worker';
 
 @Component({
@@ -12,10 +13,12 @@ export class AppHome {
 
   @State() repos: IGithubRepo[];
   @State() orgs: IGithubOrg[];
+  @State() posts: BlogPostInterface[];
 
   async componentWillLoad() {
     this.repos = await getRepos();
     this.orgs = await getOrgs();
+    this.posts = blogContent as any;
   }
 
   render() {
@@ -37,6 +40,13 @@ export class AppHome {
           <img src="https://img.shields.io/badge/-mysql-4479a1?style=for-the-badge&logo=mysql&logoColor=fff" alt="MySQL" />
           <img src="https://img.shields.io/badge/-NodeJS-026e00?style=for-the-badge&logo=Node.js&logoColor=fff" alt="NodeJS" />
         </p> */}
+
+        {(this.posts && this.posts.length > 0) && <article>
+          <h1>Blog Posts</h1>
+          <div class="posts">
+            {this.posts.map(post => <blog-card post={post} />)}
+          </div>
+        </article>}
 
         {(this.orgs && this.orgs.length > 0) && <article>
           <h1>Organizations</h1>

@@ -4,6 +4,7 @@
 }
 
 .repos,
+.posts,
 .orgs {
   display: grid;
   grid-template-columns: 1fr;
@@ -19,6 +20,9 @@
 @media only screen and (min-width: 394px) {
   .orgs {
     grid-template-columns: repeat(auto-fit, minmax(362px, 1fr));
+  }
+  .posts {
+    grid-template-columns: repeat(auto-fill, minmax(362px, 1fr));
   }
 }
 

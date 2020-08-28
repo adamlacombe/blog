@@ -1,4 +1,5 @@
 import { Component, h, Host, Prop, State } from '@stencil/core';
+import { Helmet } from '@stencil/helmet';
 import blogContent from '../../assets/blog/list.json';
 import { BlogPostInterface, MarkdownContent } from '../../global/definitions';
 import { toHypertext } from '../../global/helpers';
@@ -26,6 +27,16 @@ export class BlogPost {
 
   render() {
     return <Host>
+      <Helmet>
+        <title>{this.content.title}</title>
+        <meta name="keywords" content={this.post.tags.join(", ")} />
+        <meta name="description" content={this.content.description} />
+        <meta name="og:description" content={this.content.description} />
+        <meta name="twitter:description" content={this.content.description} />
+
+        <meta name="og:image" content={this.post.img} />
+        <meta name="twitter:image" content={this.post.img} />
+      </Helmet>
       <div>
         <article class="post">
           <div class="image">
@@ -33,7 +44,7 @@ export class BlogPost {
           </div>
           <div class="content">
             <h1>{this.post.title}</h1>
-            {toHypertext(this.content.hypertext)}
+            <div>{toHypertext(this.content.hypertext)}</div>
             <div class="meta">
               <div>
                 <ion-icon name="calendar-sharp" />

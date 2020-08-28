@@ -5,11 +5,20 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { IGithubOrg, IGithubRepo } from "./global/definitions";
+import { BlogPostInterface, IGithubOrg, IGithubRepo } from "./global/definitions";
 export namespace Components {
     interface AppHome {
     }
     interface AppRoot {
+    }
+    interface BlogCard {
+        "post": BlogPostInterface;
+    }
+    interface BlogPost {
+        "page": string;
+    }
+    interface HighlightCode {
+        "language": string;
     }
     interface OrgCard {
         "org": IGithubOrg;
@@ -31,6 +40,24 @@ declare global {
         prototype: HTMLAppRootElement;
         new (): HTMLAppRootElement;
     };
+    interface HTMLBlogCardElement extends Components.BlogCard, HTMLStencilElement {
+    }
+    var HTMLBlogCardElement: {
+        prototype: HTMLBlogCardElement;
+        new (): HTMLBlogCardElement;
+    };
+    interface HTMLBlogPostElement extends Components.BlogPost, HTMLStencilElement {
+    }
+    var HTMLBlogPostElement: {
+        prototype: HTMLBlogPostElement;
+        new (): HTMLBlogPostElement;
+    };
+    interface HTMLHighlightCodeElement extends Components.HighlightCode, HTMLStencilElement {
+    }
+    var HTMLHighlightCodeElement: {
+        prototype: HTMLHighlightCodeElement;
+        new (): HTMLHighlightCodeElement;
+    };
     interface HTMLOrgCardElement extends Components.OrgCard, HTMLStencilElement {
     }
     var HTMLOrgCardElement: {
@@ -46,6 +73,9 @@ declare global {
     interface HTMLElementTagNameMap {
         "app-home": HTMLAppHomeElement;
         "app-root": HTMLAppRootElement;
+        "blog-card": HTMLBlogCardElement;
+        "blog-post": HTMLBlogPostElement;
+        "highlight-code": HTMLHighlightCodeElement;
         "org-card": HTMLOrgCardElement;
         "repo-card": HTMLRepoCardElement;
     }
@@ -54,6 +84,15 @@ declare namespace LocalJSX {
     interface AppHome {
     }
     interface AppRoot {
+    }
+    interface BlogCard {
+        "post"?: BlogPostInterface;
+    }
+    interface BlogPost {
+        "page"?: string;
+    }
+    interface HighlightCode {
+        "language"?: string;
     }
     interface OrgCard {
         "org"?: IGithubOrg;
@@ -64,6 +103,9 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "app-home": AppHome;
         "app-root": AppRoot;
+        "blog-card": BlogCard;
+        "blog-post": BlogPost;
+        "highlight-code": HighlightCode;
         "org-card": OrgCard;
         "repo-card": RepoCard;
     }
@@ -74,6 +116,9 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
+            "blog-card": LocalJSX.BlogCard & JSXBase.HTMLAttributes<HTMLBlogCardElement>;
+            "blog-post": LocalJSX.BlogPost & JSXBase.HTMLAttributes<HTMLBlogPostElement>;
+            "highlight-code": LocalJSX.HighlightCode & JSXBase.HTMLAttributes<HTMLHighlightCodeElement>;
             "org-card": LocalJSX.OrgCard & JSXBase.HTMLAttributes<HTMLOrgCardElement>;
             "repo-card": LocalJSX.RepoCard & JSXBase.HTMLAttributes<HTMLRepoCardElement>;
         }

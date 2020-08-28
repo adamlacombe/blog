@@ -14,6 +14,15 @@ export const toHypertext = (data: any) => {
   const args = [];
   for (let i = 0; i < data.length; i++) {
     let arg = data[i];
+    if (i === 0 && typeof arg === 'string' && arg.toLowerCase().trim() === "a") {
+      if (data[1] && data[1].href) {
+        let u = new URL(data[1].href);
+        if (u.origin !== window.location.origin) {
+          data[1] = { ...data[1], target: "_blank" };
+        }
+      }
+
+    }
     if (i === 0 && typeof arg === 'string' && tagBlacklist.includes(arg.toLowerCase().trim())) {
       arg = 'template';
 

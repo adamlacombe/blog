@@ -1,12 +1,16 @@
 [
   {
-    "title": "Test",
-    "date": "August 6, 2020",
-    "url": "/blog/test",
+    "title": "Introduction to Docker",
+    "date": "August 28, 2020",
+    "url": "/blog/introduction-to-docker",
     "author": "Adam LaCombe",
     "twitter": "adamlacombe",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed malesuada dolor id pretium euismod. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur eget velit pretium, semper dolor ac, dignissim justo.",
+    "description": "This is a basic introduction to Docker. You'll learn how to install Docker, build images and run containers.",
+    "tags": [
+      "docker",
+      "containers"
+    ],
     "img": "/assets/blog/images/docker-commands.jpg",
-    "filePath": "/assets/blog/test.json"
+    "filePath": "/assets/blog/introduction-to-docker.json"
   }
 ]

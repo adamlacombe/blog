@@ -2,7 +2,7 @@ import { Component, h, Host, Listen, State } from '@stencil/core';
 import { match, Route } from 'stencil-router-v2';
 import { IGithubProfile } from '../../global/definitions';
 import { getProfile } from '../../global/github.worker';
-import { Router, state } from '../../global/store';
+import { clickRoutableLink, Router, state } from '../../global/store';
 
 
 @Component({
@@ -39,16 +39,18 @@ export class AppRoot {
         <div class="wrapper">
           <div class="header" itemscope itemtype="http://schema.org/Person">
             <div class="about">
-              <picture>
-                {(this.profile.avatar_url.optimized) && <source type={`image/webp`} srcSet={this.profile.avatar_url.optimized} />}
-                <img loading={'lazy'}
-                  width={this.profile.avatar_url.dimensions.width}
-                  height={this.profile.avatar_url.dimensions.height}
-                  src={this.profile.avatar_url.original}
-                  class="profile-photo"
-                  alt="Adam LaCombe"
-                  itemprop="image" />
-              </picture>
+              <a href="/" onClick={(e) => clickRoutableLink(e)}>
+                <picture>
+                  {(this.profile.avatar_url.optimized) && <source type={`image/webp`} srcSet={this.profile.avatar_url.optimized} />}
+                  <img loading={'lazy'}
+                    width={this.profile.avatar_url.dimensions.width}
+                    height={this.profile.avatar_url.dimensions.height}
+                    src={this.profile.avatar_url.original}
+                    class="profile-photo"
+                    alt="Adam LaCombe"
+                    itemprop="image" />
+                </picture>
+              </a>
             </div>
             <h1 itemprop="givenName">{this.profile.name}</h1>
             <h2 itemprop="jobTitle">Web Developer</h2>
@@ -57,20 +59,36 @@ export class AppRoot {
               <a itemprop="sameAs" href="https://stackoverflow.com/users/9238321/adam-lacombe" target="_blank" rel="noopener" aria-label="Stack Overflow" title="Stack Overflow">
                 <ion-icon name="logo-stackoverflow" />
               </a>
-              <a itemprop="sameAs" href="https://twitter.com/adamlacombe" target="_blank" aria-label="Twitter" rel="noopener" title="Twitter">
-                <fa-icon type="fab" name="twitter" />
-              </a>
               <a itemprop="sameAs" href="https://github.com/adamlacombe" target="_blank" aria-label="Github" rel="noopener" title="Github">
                 <fa-icon type="fab" name="github" />
               </a>
               <a itemprop="sameAs" href="https://dev.to/adamlacombe" target="_blank" aria-label="Dev.to" rel="noopener" title="Dev.to">
                 <fa-icon type="fab" name="dev" />
               </a>
+              <a itemprop="sameAs" href="https://www.npmjs.com/~adamlacombe" target="_blank" aria-label="npm" rel="noopener" title="npm">
+                <ion-icon name="logo-npm" />
+              </a>
+              <a itemprop="sameAs" href="https://twitter.com/adamlacombe" target="_blank" aria-label="Twitter" rel="noopener" title="Twitter">
+                <fa-icon type="fab" name="twitter" />
+              </a>
+              <a itemprop="sameAs" href="https://facebook.com/adamlacombe" target="_blank" aria-label="Facebook" rel="noopener" title="Facebook">
+                <ion-icon name="logo-facebook" />
+              </a>
+              <a itemprop="sameAs" href="https://www.instagram.com/webdev204/" target="_blank" aria-label="Instagram" rel="noopener" title="Instagram">
+                <ion-icon name="logo-instagram" />
+              </a>
             </div>
 
             <div class="sponsor">
               <iframe src="https://github.com/sponsors/adamlacombe/button" title="Sponsor adamlacombe" height="35" width="107" style={{ border: '0' }} />
             </div>
+
+            <nav>
+              <ul>
+                <li><a href="/" onClick={(e) => clickRoutableLink(e)}>Home</a></li>
+                <li><a href="/" onClick={(e) => clickRoutableLink(e)}>Blog</a></li>
+              </ul>
+            </nav>
 
             <div class="stats-wrapper">
               <div class="stats-inner">

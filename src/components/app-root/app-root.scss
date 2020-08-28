@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap");
+
 :host {
   display: block;
 }
@@ -109,6 +111,38 @@ fa-icon {
     > div:last-child {
       text-transform: uppercase;
       font-size: 0.7em;
+    }
+  }
+}
+
+nav {
+  ul {
+    padding-inline-start: 0;
+    list-style: none;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    font-size: 1.1rem;
+    justify-content: center;
+    align-items: center;
+
+    li {
+      a {
+        display: block;
+        width: 60px;
+        text-align: center;
+        color: inherit;
+        text-decoration: none;
+        font-family: "Open Sans", sans-serif;
+        font-weight: bold;
+        font-size: 1.25rem;
+        border: 1px solid #8a8a8a94;
+        border-radius: 4px;
+        padding: 0.15em 0.75em;
+        background: #00000038;
+        box-shadow: inset 0px 0px 1px 1px rgb(255 255 255 / 35%);
+      }
     }
   }
 }

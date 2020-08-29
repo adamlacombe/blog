@@ -5,12 +5,12 @@
     "url": "/blog/introduction-to-docker",
     "author": "Adam LaCombe",
     "twitter": "adamlacombe",
-    "description": "This is a basic introduction to Docker. You'll learn how to install Docker, build images and run containers.",
+    "description": "This is a basic introduction to Docker. You'll learn what docker is, how to install it, build images and run containers.",
     "tags": [
       "docker",
       "containers"
     ],
-    "img": "/assets/blog/images/docker-commands.jpg",
+    "img": "/assets/blog/images/introduction-to-docker/docker-commands.jpg",
     "filePath": "/assets/blog/introduction-to-docker.json"
   }
 ]

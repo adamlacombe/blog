@@ -13,6 +13,7 @@ export const colors = {
   Dart: "#00B4AB",
   AspectJ: "#a957b0",
   Shell: "#89e051",
+  Bash: "#adadad",
   "Web Ontology Language": "#9cc9dd",
   xBase: "#403a40",
   Eiffel: "#946d57",

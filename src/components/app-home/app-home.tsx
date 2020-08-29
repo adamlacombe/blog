@@ -27,10 +27,12 @@ export class AppHome {
         <title>Adam LaCombe</title>
         <meta name="keywords" content={""} />
         <meta name="description" content={`Web dev blog with focus on StencilJS`} />
-        <meta name="og:description" content={`Web dev blog with focus on StencilJS`} />
+        <meta property="og:description" content={`Web dev blog with focus on StencilJS`} />
         <meta name="twitter:description" content={`Web dev blog with focus on StencilJS`} />
-        <meta name="og:image" content={"https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80"} />
+        <meta property="og:image" content={"https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80"} />
         <meta name="twitter:image" content={"https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80"} />
+
+        <meta property="og:type" content="website" />
       </Helmet>
       <div class='app-home'>
         {/* <p>

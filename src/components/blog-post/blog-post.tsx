@@ -18,11 +18,9 @@ export class BlogPost {
   async componentWillLoad() {
     const posts: BlogPostInterface[] = blogContent as any;
     this.post = posts.find(el => el.url === this.page);
-    console.log(this.post);
 
     const req = await fetch(this.post.filePath);
     this.content = await req.json();
-    console.log(this.content);
   }
 
   render() {
@@ -31,11 +29,13 @@ export class BlogPost {
         <title>{this.content.title}</title>
         <meta name="keywords" content={this.post.tags.join(", ")} />
         <meta name="description" content={this.content.description} />
-        <meta name="og:description" content={this.content.description} />
+        <meta property="og:description" content={this.content.description} />
         <meta name="twitter:description" content={this.content.description} />
+        <meta name="twitter:creator" content="@adamlacombe" />
 
-        <meta name="og:image" content={this.post.img} />
+        <meta property="og:image" content={this.post.img} />
         <meta name="twitter:image" content={this.post.img} />
+        <meta property="og:type" content="blog" />
       </Helmet>
       <div>
         <article class="post">

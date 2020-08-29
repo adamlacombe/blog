@@ -21,8 +21,12 @@ export const toHypertext = (data: any) => {
           data[1] = { ...data[1], target: "_blank" };
         }
       }
-
     }
+
+    if (i === 0 && typeof arg === 'string' && arg.toLowerCase().trim() === "img" && data[1]) {
+      data[1] = { ...data[1], loading: "lazy" };
+    }
+
     if (i === 0 && typeof arg === 'string' && tagBlacklist.includes(arg.toLowerCase().trim())) {
       arg = 'template';
 

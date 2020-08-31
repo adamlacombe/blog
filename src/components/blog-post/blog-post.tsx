@@ -14,6 +14,7 @@ export class BlogPost {
   @Prop() page: string;
   @State() post: BlogPostInterface;
   @State() content: MarkdownContent;
+  @State() structuredData: any;
 
   async componentWillLoad() {
     const posts: BlogPostInterface[] = blogContent as any;
@@ -21,6 +22,29 @@ export class BlogPost {
 
     const req = await fetch(this.post.filePath);
     this.content = await req.json();
+
+    this.structuredData = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": this.post.url
+      },
+      "headline": this.post.title,
+      "description": this.post.description,
+      "image": [
+        this.post.img
+      ],
+      "datePublished": new Date(this.post.date).toISOString().split('T')[0],
+      "author": {
+        "@type": "Person",
+        "name": "Adam LaCombe"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Adam LaCombe"
+      }
+    };
   }
 
   render() {
@@ -36,6 +60,8 @@ export class BlogPost {
         <meta property="og:image" content={this.post.img} />
         <meta name="twitter:image" content={this.post.img} />
         <meta property="og:type" content="blog" />
+
+        <script type="application/ld+json">{JSON.stringify(this.structuredData)}</script>
       </Helmet>
       <div>
         <article class="post">

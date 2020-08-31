@@ -15,7 +15,7 @@ export class BlogCard {
     return <Host>
       <div class="wrap">
         <div>
-          <img src={this.post.img} alt={`${this.post.title}`} />
+          <al-img src={this.post.img} alt={`${this.post.title}`} />
         </div>
         <div class="body">
           <div class="name" itemprop="name">

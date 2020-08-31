@@ -1,3 +1,4 @@
+import { env } from '@alepop/stencil-env';
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 
@@ -27,7 +28,8 @@ export const config: Config = {
       injectGlobalPaths: [
         'src/global/global.scss',
       ],
-    })
+    }),
+    env({})
   ],
   enableCache: false,
   devServer: {

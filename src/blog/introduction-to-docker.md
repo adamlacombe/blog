@@ -12,11 +12,7 @@ img: /assets/blog/images/introduction-to-docker/docker-commands.jpg
 # What is Docker?
 Docker allows developers to run their applications in a predefined environment. Have you ever heard the phrase `It works on my machine`? 
 
-<picture>
-  <source type="image/avif" srcset="/assets/blog/images/introduction-to-docker/avif/it-works-on-my-machine.avif" />
-  <source type="image/webp" srcset="/assets/blog/images/introduction-to-docker/webp/it-works-on-my-machine.webp" />
-  <img src="/assets/blog/images/introduction-to-docker/it-works-on-my-machine.jpg" alt="It works on my machine" loading="lazy">
-</picture>
+<al-img src="/assets/blog/images/introduction-to-docker/it-works-on-my-machine.jpg" alt="It works on my machine"></al-img>
 
 Well, no more! You can write a Dockerfile that packages up all the dependencies and configurations someone might need to run your application. 
 
@@ -59,11 +55,7 @@ Let's run an instance of [hello-world](https://hub.docker.com/_/hello-world):
 docker run hello-world
 ```
 
-<picture>
-  <source type="image/avif" srcset="/assets/blog/images/introduction-to-docker/avif/docker-run-hello-world.avif" />
-  <source type="image/webp" srcset="/assets/blog/images/introduction-to-docker/webp/docker-run-hello-world.webp" />
-  <img src="/assets/blog/images/introduction-to-docker/docker-run-hello-world.png" alt="Run hello-world" loading="lazy">
-</picture>
+<al-img src="/assets/blog/images/introduction-to-docker/docker-run-hello-world.png" alt="Run hello-world"></al-img>
 
 # Creating an image
 The purpose of this image will be to run a simple Apache server.
@@ -87,11 +79,7 @@ docker build -t simple-apache-server .
 
 You should see the following output:
 
-<picture>
-  <source type="image/avif" srcset="/assets/blog/images/introduction-to-docker/avif/docker-build-simple-apache-server.avif" />
-  <source type="image/webp" srcset="/assets/blog/images/introduction-to-docker/webp/docker-build-simple-apache-server.webp" />
-  <img src="/assets/blog/images/introduction-to-docker/docker-build-simple-apache-server.png" alt="build simple-apache-server" loading="lazy">
-</picture>
+<al-img src="/assets/blog/images/introduction-to-docker/docker-build-simple-apache-server.png" alt="build simple-apache-server"></al-img>
 
 # Running a container
 Now that you've built an image, let's run an instance of it.
@@ -102,11 +90,7 @@ docker run -d --name my-apache-container -p 3338:80 simple-apache-server
 
 Navigate to [localhost:3338](http://localhost:3338) in your browser and you should see the default apache page!
 
-<picture>
-  <source type="image/avif" srcset="/assets/blog/images/introduction-to-docker/avif/apache-default-page.avif" />
-  <source type="image/webp" srcset="/assets/blog/images/introduction-to-docker/webp/apache-default-page.webp" />
-  <img src="/assets/blog/images/introduction-to-docker/apache-default-page.png" alt="default Apache page" loading="lazy">
-</picture>
+<al-img src="/assets/blog/images/introduction-to-docker/apache-default-page.png" alt="default Apache page"></al-img>
 
 ### An explanation of the different arguments used in the command above:
  - `-d` will run the container in the background and print its container ID.

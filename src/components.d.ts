@@ -7,6 +7,12 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { BlogPostInterface, IGithubOrg, IGithubRepo } from "./global/definitions";
 export namespace Components {
+    interface AlImg {
+        "alt": string;
+        "height": string | number;
+        "src": string;
+        "width": string | number;
+    }
     interface AppHome {
     }
     interface AppRoot {
@@ -28,6 +34,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLAlImgElement extends Components.AlImg, HTMLStencilElement {
+    }
+    var HTMLAlImgElement: {
+        prototype: HTMLAlImgElement;
+        new (): HTMLAlImgElement;
+    };
     interface HTMLAppHomeElement extends Components.AppHome, HTMLStencilElement {
     }
     var HTMLAppHomeElement: {
@@ -71,6 +83,7 @@ declare global {
         new (): HTMLRepoCardElement;
     };
     interface HTMLElementTagNameMap {
+        "al-img": HTMLAlImgElement;
         "app-home": HTMLAppHomeElement;
         "app-root": HTMLAppRootElement;
         "blog-card": HTMLBlogCardElement;
@@ -81,6 +94,12 @@ declare global {
     }
 }
 declare namespace LocalJSX {
+    interface AlImg {
+        "alt"?: string;
+        "height"?: string | number;
+        "src"?: string;
+        "width"?: string | number;
+    }
     interface AppHome {
     }
     interface AppRoot {
@@ -101,6 +120,7 @@ declare namespace LocalJSX {
         "repo"?: IGithubRepo;
     }
     interface IntrinsicElements {
+        "al-img": AlImg;
         "app-home": AppHome;
         "app-root": AppRoot;
         "blog-card": BlogCard;
@@ -114,6 +134,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "al-img": LocalJSX.AlImg & JSXBase.HTMLAttributes<HTMLAlImgElement>;
             "app-home": LocalJSX.AppHome & JSXBase.HTMLAttributes<HTMLAppHomeElement>;
             "app-root": LocalJSX.AppRoot & JSXBase.HTMLAttributes<HTMLAppRootElement>;
             "blog-card": LocalJSX.BlogCard & JSXBase.HTMLAttributes<HTMLBlogCardElement>;

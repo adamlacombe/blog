@@ -40,16 +40,13 @@ export class AppRoot {
           <div class="header" itemscope itemtype="http://schema.org/Person">
             <div class="about">
               <a href="/" onClick={(e) => clickRoutableLink(e)}>
-                <picture>
-                  {(this.profile.avatar_url.optimized) && <source type={`image/webp`} srcSet={this.profile.avatar_url.optimized} />}
-                  <img loading={'lazy'}
-                    width={this.profile.avatar_url.dimensions.width}
-                    height={this.profile.avatar_url.dimensions.height}
-                    src={this.profile.avatar_url.original}
-                    class="profile-photo"
-                    alt="Adam LaCombe"
-                    itemprop="image" />
-                </picture>
+                <al-img
+                  width={this.profile.avatar_url.dimensions.width}
+                  height={this.profile.avatar_url.dimensions.height}
+                  src={this.profile.avatar_url.original}
+                  class="profile-photo"
+                  alt="Adam LaCombe"
+                  itemprop="image" />
               </a>
             </div>
             <h1 itemprop="givenName">{this.profile.name}</h1>
@@ -118,7 +115,6 @@ export class AppRoot {
             <Router.Switch>
               <Route path={"/"} render={({ page }) => <app-home />} />
               <Route path={match('/blog/:page')} render={({ page }) => <blog-post page={`/blog/${page}`} />} />
-
             </Router.Switch>
           </div>
         </div>

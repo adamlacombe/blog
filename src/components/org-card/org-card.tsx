@@ -14,15 +14,12 @@ export class OrgCard {
     return <Host style={{ '--theme-color': this.org.themeColor }} itemscope itemtype="http://schema.org/Organization">
       <div class="wrap">
         <div>
-          <picture>
-            {(this.org.avatar_url.optimized) && <source type={`image/webp`} srcSet={this.org.avatar_url.optimized} />}
-            <img loading={'lazy'}
-              width={this.org.avatar_url.dimensions.width}
-              height={this.org.avatar_url.dimensions.height}
-              src={this.org.avatar_url.original}
-              alt={`${this.org.name}'s logo`}
-              itemprop="logo" />
-          </picture>
+          <al-img
+            width={this.org.avatar_url.dimensions.width}
+            height={this.org.avatar_url.dimensions.height}
+            src={this.org.avatar_url.original}
+            alt={`${this.org.name}'s logo`}
+            itemprop="logo" />
         </div>
         <div>
           <div class="name" itemprop="name">

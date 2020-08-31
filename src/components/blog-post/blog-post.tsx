@@ -40,7 +40,7 @@ export class BlogPost {
       <div>
         <article class="post">
           <div class="image">
-            <img src={this.post.img} alt="image" />
+            <al-img src={this.post.img} alt={this.post.title} />
           </div>
           <div class="content">
             <h1>{this.post.title}</h1>

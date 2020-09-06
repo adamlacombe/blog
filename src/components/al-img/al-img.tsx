@@ -15,6 +15,7 @@ export class AlImage {
   @Prop({ reflect: true }) alt: string;
   @Prop({ reflect: true }) width: string | number;
   @Prop({ reflect: true }) height: string | number;
+  private SHARP_IMAGE_PROXY_URL = (window.location.origin.includes("localhost")) ? "http://localhost:8080" : "https://images.adamlacombe.com";
 
   private widths: number[] = [320, 640, 960, 1280, 2560];
   private types = [
@@ -37,7 +38,7 @@ export class AlImage {
   render() {
     return <Host>
       <picture>
-        {this.types.map(type => this.widths.map(width => <source type={`image/${type.type}`} srcSet={`${process.env.SHARP_IMAGE_PROXY_URL}/?url=${this.src}&format=${type.type}&quality=${type.quality}&width=${width}`} media={`(max-width: ${width}px)`} />))}
+        {this.types.map(type => this.widths.map(width => <source type={`image/${type.type}`} srcSet={`${this.SHARP_IMAGE_PROXY_URL}/?url=${this.src}&format=${type.type}&quality=${type.quality}&width=${width}`} media={`(max-width: ${width}px)`} />))}
         <img loading={'lazy'} src={this.src} alt={this.alt} />
       </picture>
     </Host>;

@@ -1,9 +1,9 @@
 import { Component, h, State } from '@stencil/core';
-import Helmet from '@stencil/helmet';
 import blogContent from '../../assets/blog/list.json';
 import orgs from '../../assets/github/orgs.json';
 import repos from '../../assets/github/repos.json';
 import { BlogPostInterface, IGithubOrg, IGithubRepo } from '../../global/definitions';
+import { defaults, state } from '../../global/store';
 
 @Component({
   tag: 'app-home',
@@ -20,21 +20,16 @@ export class AppHome {
     this.repos = repos as any;
     this.orgs = orgs as any;
     this.posts = blogContent as any;
+
+    state.title = defaults.title;
+    state.keywords = defaults.keywords;
+    state.description = defaults.description;
+    state.image = defaults.image;
   }
 
   render() {
     return <host>
-      <Helmet>
-        <title>Adam LaCombe</title>
-        <meta name="keywords" content={""} />
-        <meta name="description" content={`Web dev blog with focus on StencilJS`} />
-        <meta property="og:description" content={`Web dev blog with focus on StencilJS`} />
-        <meta name="twitter:description" content={`Web dev blog with focus on StencilJS`} />
-        <meta property="og:image" content={"https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80"} />
-        <meta name="twitter:image" content={"https://images.unsplash.com/photo-1518773553398-650c184e0bb3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1200&q=80"} />
 
-        <meta property="og:type" content="website" />
-      </Helmet>
       <div class='app-home'>
         {/* <p>
           <img src="https://img.shields.io/badge/-JavaScript-black?style=for-the-badge&logo=javascript" alt="Javascript" />

@@ -1,8 +1,10 @@
 import { Component, h, Host, Listen, State } from '@stencil/core';
+import Helmet from '@stencil/helmet';
 import { match, Route } from 'stencil-router-v2';
 import profile from '../../assets/github/profile.json';
 import { IGithubProfile } from '../../global/definitions';
-import { clickRoutableLink, Router, state } from '../../global/store';
+import { schema } from '../../global/schema';
+import { clickRoutableLink, defaults, Router, state } from '../../global/store';
 
 @Component({
   tag: 'app-root',
@@ -34,6 +36,17 @@ export class AppRoot {
 
   render() {
     return <Host class={{ 'menu-open': state.menuIsOpen }}>
+      <Helmet>
+        <title>{state.title}</title>
+        <meta name="keywords" content={state.keywords} />
+        <meta name="description" content={state.description} />
+        <meta property="og:description" content={state.description} />
+        <meta name="twitter:description" content={state.description} />
+        <meta property="og:image" content={state.image} />
+        <meta name="twitter:image" content={state.image} />
+      </Helmet>
+      <script type="application/ld+json">{JSON.stringify(schema)}</script>
+
       <div class="">
         <div class="wrapper">
           <div class="header" itemscope itemtype="http://schema.org/Person">
@@ -44,12 +57,12 @@ export class AppRoot {
                   height={this.profile.avatar_url.dimensions.height}
                   src={this.profile.avatar_url.original}
                   class="profile-photo"
-                  alt="Adam LaCombe"
+                  alt={defaults.name}
                   itemprop="image" />
               </a>
             </div>
-            <h1 itemprop="givenName">{this.profile.name}</h1>
-            <h2 itemprop="jobTitle">Web Developer</h2>
+            <h1 itemprop="givenName">{defaults.name}</h1>
+            <h2 itemprop="jobTitle">{defaults.jobTitle}</h2>
 
             <div class="social">
               <a itemprop="sameAs" href="https://stackoverflow.com/users/9238321/adam-lacombe" target="_blank" rel="noopener" aria-label="Stack Overflow" title="Stack Overflow">

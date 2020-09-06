@@ -72,11 +72,6 @@ const BLOG_LIST_FILE = './src/assets/blog/list.json';
         parsedMarkdown.attributes.tags = parsedMarkdown.attributes.tags.split(',').map(v => v.trim());
       }
 
-      allBlogPosts.push({
-        ...parsedMarkdown.attributes,
-        filePath: path.join('/assets/blog/', path.basename(jsonFileName, '.md') + '.json')
-      });
-
       htmlContents = marked(parsedMarkdown.body, {
         renderer,
         headerIds: true
@@ -93,10 +88,14 @@ const BLOG_LIST_FILE = './src/assets/blog/list.json';
         hypertext: convertHtmlToHypertextData(htmlContents)
       };
 
-      data.title = `Adam LaCombe - ${data.title.trim()}`;
-
       await writeFile(destinationFileName, JSON.stringify(data), {
         encoding: 'utf8'
+      });
+
+      allBlogPosts.push({
+        ...parsedMarkdown.attributes,
+        filePath: path.join('/assets/blog/', path.basename(jsonFileName, '.md') + '.json'),
+        ...data
       });
 
     } catch (e) {

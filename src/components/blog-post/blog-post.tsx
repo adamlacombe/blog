@@ -1,9 +1,11 @@
 import { Component, h, Host, Prop, State } from '@stencil/core';
 import { Helmet } from '@stencil/helmet';
-import postContent from '../../assets/blog/introduction-to-docker.json';
+import { TechArticle, WithContext } from 'schema-dts';
 import blogContent from '../../assets/blog/list.json';
 import { BlogPostInterface, MarkdownContent } from '../../global/definitions';
 import { toHypertext } from '../../global/helpers';
+import { SCHEMA_ME_ID, SCHEMA_WEBSITE_ID } from '../../global/schema';
+import { state } from '../../global/store';
 
 @Component({
   tag: 'blog-post',
@@ -15,37 +17,34 @@ export class BlogPost {
   @Prop() page: string;
   @State() post: BlogPostInterface;
   @State() content: MarkdownContent;
-  @State() structuredData: any;
+  @State() structuredData: WithContext<TechArticle>;
 
   async componentWillLoad() {
-    const posts: BlogPostInterface[] = blogContent as any;
-    this.post = posts.find(el => el.url === this.page);
-
-    //const req = await fetch(this.post.filePath);
-    this.content = postContent as any;
+    this.post = blogContent.find(el => el.url === this.page);
+    this.content = this.post;
 
     this.structuredData = {
       "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": this.post.url
+      "@type": "TechArticle",
+      mainEntityOfPage: {
+        "@id": SCHEMA_WEBSITE_ID,
       },
-      "headline": this.post.title,
-      "description": this.post.description,
-      "image": [
-        this.post.img
-      ],
-      "datePublished": new Date(this.post.date).toISOString().split('T')[0],
-      "author": {
-        "@type": "Person",
-        "name": "Adam LaCombe"
+      headline: this.post.title,
+      description: this.post.description,
+      image: this.post.img,
+      datePublished: new Date(this.post.date).toISOString().split('T')[0],
+      author: {
+        "@id": SCHEMA_ME_ID,
       },
-      "publisher": {
-        "@type": "Person",
-        "name": "Adam LaCombe"
+      publisher: {
+        "@id": SCHEMA_ME_ID,
       }
     };
+
+    state.title = this.content.title;
+    state.keywords = this.post.tags.join(", ");
+    state.description = this.content.description;
+    state.image = this.post.img;
   }
 
   render() {
@@ -53,19 +52,9 @@ export class BlogPost {
 
     return <Host>
       <Helmet>
-        <title>{this.content.title}</title>
-        <meta name="keywords" content={this.post.tags.join(", ")} />
-        <meta name="description" content={this.content.description} />
-        <meta property="og:description" content={this.content.description} />
-        <meta name="twitter:description" content={this.content.description} />
         <meta name="twitter:creator" content="@adamlacombe" />
-
-        <meta property="og:image" content={this.post.img} />
-        <meta name="twitter:image" content={this.post.img} />
-        <meta property="og:type" content="blog" />
-
-        <script type="application/ld+json">{JSON.stringify(this.structuredData)}</script>
       </Helmet>
+      <script type="application/ld+json">{JSON.stringify(this.structuredData)}</script>
       <div>
         <article class="post">
           <div class="image">

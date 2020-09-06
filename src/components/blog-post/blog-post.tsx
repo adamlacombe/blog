@@ -1,5 +1,6 @@
 import { Component, h, Host, Prop, State } from '@stencil/core';
 import { Helmet } from '@stencil/helmet';
+import postContent from '../../assets/blog/introduction-to-docker.json';
 import blogContent from '../../assets/blog/list.json';
 import { BlogPostInterface, MarkdownContent } from '../../global/definitions';
 import { toHypertext } from '../../global/helpers';
@@ -20,8 +21,8 @@ export class BlogPost {
     const posts: BlogPostInterface[] = blogContent as any;
     this.post = posts.find(el => el.url === this.page);
 
-    const req = await fetch(this.post.filePath);
-    this.content = await req.json();
+    //const req = await fetch(this.post.filePath);
+    this.content = postContent as any;
 
     this.structuredData = {
       "@context": "https://schema.org",
@@ -48,6 +49,8 @@ export class BlogPost {
   }
 
   render() {
+    if (!(this.post && this.content)) return;
+
     return <Host>
       <Helmet>
         <title>{this.content.title}</title>

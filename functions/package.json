@@ -1,0 +1,33 @@
+{
+  "name": "functions",
+  "scripts": {
+    "lint": "tslint --project tsconfig.json",
+    "build": "tsc",
+    "serve": "npm run build && firebase serve --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "9.1.1",
+    "firebase-functions": "3.11.0",
+    "node-fetch": "2.6.1",
+    "express": "4.17.1",
+    "ua-parser-js": "0.7.21"
+  },
+  "devDependencies": {
+    "typescript": "4.0.2",
+    "@types/express": "4.17.8",
+    "@types/node-fetch": "2.5.7",
+    "@types/node": "^14.0.14"
+  },
+  "private": true,
+  "engines": {
+    "node": "10"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  }
+}

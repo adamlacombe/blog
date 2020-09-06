@@ -11,7 +11,8 @@
     "generate": "stencil generate",
     "blog": "tsc --p ./scripts && node ./scripts/blog-list",
     "github": "tsc --p ./scripts && node ./scripts/github-stats",
-    "deploy": "npm run build && firebase deploy --only hosting:adam-lacombe"
+    "deploy": "npm run build && firebase deploy --only hosting:adam-lacombe",
+    "deploy.functions": "firebase deploy --only functions"
   },
   "dependencies": {
     "@stencil/helmet": "0.3.2",

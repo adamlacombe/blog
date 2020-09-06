@@ -30,3 +30,7 @@ UserInterfaceState.xcuserstate
 *.js
 
 .firebase/
+
+functions/lib/
+
+functions/src/prerender/

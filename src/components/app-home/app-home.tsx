@@ -1,8 +1,9 @@
 import { Component, h, State } from '@stencil/core';
 import Helmet from '@stencil/helmet';
 import blogContent from '../../assets/blog/list.json';
+import orgs from '../../assets/github/orgs.json';
+import repos from '../../assets/github/repos.json';
 import { BlogPostInterface, IGithubOrg, IGithubRepo } from '../../global/definitions';
-import { getOrgs, getRepos } from '../../global/github.worker';
 
 @Component({
   tag: 'app-home',
@@ -16,8 +17,8 @@ export class AppHome {
   @State() posts: BlogPostInterface[];
 
   async componentWillLoad() {
-    this.repos = await getRepos();
-    this.orgs = await getOrgs();
+    this.repos = repos as any;
+    this.orgs = orgs as any;
     this.posts = blogContent as any;
   }
 

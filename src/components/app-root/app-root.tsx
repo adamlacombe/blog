@@ -1,9 +1,8 @@
 import { Component, h, Host, Listen, State } from '@stencil/core';
 import { match, Route } from 'stencil-router-v2';
+import profile from '../../assets/github/profile.json';
 import { IGithubProfile } from '../../global/definitions';
-import { getProfile } from '../../global/github.worker';
 import { clickRoutableLink, Router, state } from '../../global/store';
-
 
 @Component({
   tag: 'app-root',
@@ -15,7 +14,7 @@ export class AppRoot {
   @State() profile: IGithubProfile;
 
   async componentWillLoad() {
-    this.profile = await getProfile();
+    this.profile = profile as any;
   }
 
   @Listen("swUpdate", { target: 'window' })

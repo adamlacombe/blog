@@ -12,6 +12,8 @@ export class BlogCard {
   @Prop() post: BlogPostInterface;
 
   render() {
+    if (!this.post) return;
+    
     return <Host>
       <div class="wrap">
         <div>

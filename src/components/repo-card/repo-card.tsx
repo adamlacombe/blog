@@ -12,6 +12,8 @@ export class RepoCard {
   @Prop() repo: IGithubRepo;
 
   render() {
+    if (!this.repo) return;
+
     return <Host style={{ '--language-color': (colors[this.repo.language]) ? colors[this.repo.language] : null }} itemscope itemtype="http://schema.org/SoftwareSourceCode">
       <div class="name" itemprop="name">
         <fa-icon type="fab" name="git-square" />

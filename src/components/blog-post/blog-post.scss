@@ -68,6 +68,10 @@
       height: auto;
     }
 
+    repo-card {
+      max-width: 300px;
+    }
+
     code:not([class]) {
       background: #dededea8;
       padding: 0 0.25em;

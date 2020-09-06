@@ -1,4 +1,5 @@
 import { Component, h, Host, Prop } from '@stencil/core';
+import repos from '../../assets/github/repos.json';
 import { colors } from '../../global/colors';
 import { IGithubRepo } from '../../global/definitions';
 
@@ -9,7 +10,14 @@ import { IGithubRepo } from '../../global/definitions';
 })
 export class RepoCard {
 
-  @Prop() repo: IGithubRepo;
+  @Prop({ mutable: true }) repo: IGithubRepo;
+  @Prop() name: string;
+
+  async componentWillLoad() {
+    if (!this.repo && this.name) {
+      this.repo = repos.find(el => el.full_name === this.name) as any;
+    }
+  }
 
   render() {
     if (!this.repo) return;

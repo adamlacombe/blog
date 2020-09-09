@@ -17,34 +17,31 @@ export class BlogPost {
   @Prop() page: string;
   @State() post: BlogPostInterface;
   @State() content: MarkdownContent;
-  @State() structuredData: WithContext<TechArticle>;
+  @State() structuredData: WithContext<TechArticle> = {} as any;
 
   async componentWillLoad() {
     this.post = blogContent.find(el => el.url === this.page);
     this.content = this.post;
 
-    this.structuredData = {
-      "@context": "https://schema.org",
-      "@type": "TechArticle",
-      mainEntityOfPage: {
-        "@id": SCHEMA_WEBSITE_ID,
-      },
-      headline: this.post.title,
-      description: this.post.description,
-      image: this.post.img,
-      datePublished: new Date(this.post.date).toISOString().split('T')[0],
-      author: {
-        "@id": SCHEMA_ME_ID,
-      },
-      publisher: {
-        "@id": SCHEMA_ME_ID,
-      }
-    };
-
-    state.title = this.content.title;
-    state.keywords = this.post.tags.join(", ");
-    state.description = this.content.description;
-    state.image = this.post.img;
+    if (this.post && this.content) {
+      this.structuredData = {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        mainEntityOfPage: {
+          "@id": SCHEMA_WEBSITE_ID,
+        },
+        headline: this.post.title,
+        description: this.post.description,
+        image: this.post.img,
+        datePublished: new Date(this.post.date).toISOString().split('T')[0],
+        author: {
+          "@id": SCHEMA_ME_ID,
+        },
+        publisher: {
+          "@id": SCHEMA_ME_ID,
+        }
+      };
+    }
   }
 
   render() {
@@ -52,6 +49,13 @@ export class BlogPost {
 
     return <Host>
       <Helmet>
+        <title>{this.content.title}</title>
+        <meta name="keywords" content={this.post.tags.join(", ")} />
+        <meta name="description" content={this.content.description} />
+        <meta property="og:description" content={this.content.description} />
+        <meta name="twitter:description" content={this.content.description} />
+        <meta property="og:image" content={this.post.img} />
+        <meta name="twitter:image" content={this.post.img} />
         <meta name="twitter:creator" content="@adamlacombe" />
       </Helmet>
       <script type="application/ld+json">{JSON.stringify(this.structuredData)}</script>

@@ -19,9 +19,12 @@ export class HighlightCode {
   @State() showCopied: boolean;
 
   componentWillLoad() {
-    const l = this.colors.find(el => el.key === this.language.toLowerCase());
-    this.color = l?.value;
-    this.languageName = l?.originalKey || this.language;
+    this.languageName = this.language;
+    if (this.language) {
+      const l = this.colors.find(el => el.key === this.language.toLowerCase());
+      this.color = l?.value;
+      this.languageName = l?.originalKey || this.language;
+    }
   }
 
   copyCode() {

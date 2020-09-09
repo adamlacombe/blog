@@ -1,9 +1,11 @@
-import { Component, h, State } from '@stencil/core';
+import { Component, h, Host, State } from '@stencil/core';
+import Helmet from '@stencil/helmet';
 import blogContent from '../../assets/blog/list.json';
 import orgs from '../../assets/github/orgs.json';
 import repos from '../../assets/github/repos.json';
 import { BlogPostInterface, IGithubOrg, IGithubRepo } from '../../global/definitions';
-import { defaults, state } from '../../global/store';
+import { schema } from '../../global/schema';
+import { defaults } from '../../global/store';
 
 @Component({
   tag: 'app-home',
@@ -20,16 +22,21 @@ export class AppHome {
     this.repos = repos as any;
     this.orgs = orgs as any;
     this.posts = blogContent as any;
-
-    state.title = defaults.title;
-    state.keywords = defaults.keywords;
-    state.description = defaults.description;
-    state.image = defaults.image;
   }
 
   render() {
-    return <host>
-
+    return <Host>
+      <Helmet>
+        <title>{defaults.title}</title>
+        <meta name="keywords" content={defaults.keywords} />
+        <meta name="description" content={defaults.description} />
+        <meta property="og:description" content={defaults.description} />
+        <meta name="twitter:description" content={defaults.description} />
+        <meta property="og:image" content={defaults.image} />
+        <meta name="twitter:image" content={defaults.image} />
+        <meta name="twitter:creator" content="@adamlacombe" />
+      </Helmet>
+      <script type="application/ld+json">{JSON.stringify(schema)}</script>
       <div class='app-home'>
         {/* <p>
           <img src="https://img.shields.io/badge/-JavaScript-black?style=for-the-badge&logo=javascript" alt="Javascript" />
@@ -64,6 +71,6 @@ export class AppHome {
           </div>
         </article>}
       </div>
-    </host>;
+    </Host>;
   }
 }

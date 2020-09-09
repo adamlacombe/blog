@@ -4,11 +4,6 @@ import { createRouter } from 'stencil-router-v2';
 export interface IState {
   menuIsOpen: boolean;
   isLive: boolean;
-
-  title: string;
-  keywords: string;
-  description: string;
-  image: string;
 }
 
 export const defaults = {
@@ -23,12 +18,7 @@ export const defaults = {
 
 export const store = createStore<IState>({
   menuIsOpen: true,
-  isLive: window.location.origin.includes('localhost'),
-
-  title: defaults.title,
-  keywords: defaults.keywords,
-  description: defaults.description,
-  image: defaults.image
+  isLive: window.location.origin.includes('localhost')
 });
 
 export const state = window['state'] = store.state;

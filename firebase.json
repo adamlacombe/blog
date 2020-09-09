@@ -8,12 +8,6 @@
         "**/.*",
         "**/node_modules/**"
       ],
-      "rewrites": [
-        {
-          "source": "**",
-          "function": "websiteIndex"
-        }
-      ],
       "headers": [
         {
           "source": "**/*.@(jpg|jpeg|gif|png|svg)",

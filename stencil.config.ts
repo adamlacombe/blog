@@ -12,10 +12,7 @@ export const config: Config = {
       baseUrl: 'https://adamlacombe.com/',
       prerenderConfig: './prerender.config.ts',
       serviceWorker: {
-        swSrc: 'src/sw.js',
-        globPatterns: [
-          '**/*.{js,css,json,html,ico,png,svg,txt}'
-        ]
+        unregister: true
       },
     },
     {

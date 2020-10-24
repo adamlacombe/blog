@@ -36,77 +36,99 @@ export class AppRoot {
     return <Host class={{ 'menu-open': state.menuIsOpen }}>
       <div class="">
         <div class="wrapper">
-          <div class="header" itemscope itemtype="http://schema.org/Person">
-            <div class="about">
-              <a href="/" onClick={(e) => clickRoutableLink(e)}>
-                <al-img
-                  width={this.profile.avatar_url.dimensions.width}
-                  height={this.profile.avatar_url.dimensions.height}
-                  src={this.profile.avatar_url.original}
-                  class="profile-photo"
-                  alt={defaults.name}
-                  itemprop="image" />
-              </a>
+          <header>
+            <div class="header" itemscope itemtype="http://schema.org/Person">
+
+              <div class="container">
+                <div class="left-side">
+
+                  <div class="about">
+                    <div>
+                      <a href="/" onClick={(e) => clickRoutableLink(e)}>
+                        <al-img
+                          width={this.profile.avatar_url.dimensions.width}
+                          height={this.profile.avatar_url.dimensions.height}
+                          src={this.profile.avatar_url.original}
+                          class="profile-photo"
+                          alt={defaults.name}
+                          itemprop="image" />
+                      </a>
+                    </div>
+
+                    <div>
+                      <h1 itemprop="givenName">{defaults.name}</h1>
+                      <h2 itemprop="jobTitle">{defaults.jobTitle}</h2>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="right-side">
+                  <div class="social">
+                    <a itemprop="sameAs" href="https://stackoverflow.com/users/9238321/adam-lacombe" target="_blank" rel="noopener" aria-label="Stack Overflow" title="Stack Overflow">
+                      <ion-icon name="logo-stackoverflow" />
+                    </a>
+                    <a itemprop="sameAs" href="https://github.com/adamlacombe" target="_blank" aria-label="Github" rel="noopener" title="Github">
+                      <fa-icon type="fab" name="github" />
+                    </a>
+                    <a itemprop="sameAs" href="https://dev.to/adamlacombe" target="_blank" aria-label="Dev.to" rel="noopener" title="Dev.to">
+                      <fa-icon type="fab" name="dev" />
+                    </a>
+                    <a itemprop="sameAs" href="https://www.npmjs.com/~adamlacombe" target="_blank" aria-label="npm" rel="noopener" title="npm">
+                      <ion-icon name="logo-npm" />
+                    </a>
+                    <a itemprop="sameAs" href="https://twitter.com/adamlacombe" target="_blank" aria-label="Twitter" rel="noopener" title="Twitter">
+                      <fa-icon type="fab" name="twitter" />
+                    </a>
+                    <a itemprop="sameAs" href="https://facebook.com/adamlacombe" target="_blank" aria-label="Facebook" rel="noopener" title="Facebook">
+                      <ion-icon name="logo-facebook" />
+                    </a>
+                    <a itemprop="sameAs" href="https://www.instagram.com/webdev204/" target="_blank" aria-label="Instagram" rel="noopener" title="Instagram">
+                      <ion-icon name="logo-instagram" />
+                    </a>
+                  </div>
+                  <div class="sponsor">
+                    <iframe src="https://github.com/sponsors/adamlacombe/button" title="Sponsor adamlacombe" height="35" width="107" style={{ border: '0' }} />
+                  </div>
+
+                </div>
+              </div>
+
+              {/* <nav>
+  <ul>
+    <li><a href="/" onClick={(e) => clickRoutableLink(e)}>Home</a></li>
+    <li><a href="/" onClick={(e) => clickRoutableLink(e)}>Blog</a></li>
+  </ul>
+</nav> */}
+
+
             </div>
-            <h1 itemprop="givenName">{defaults.name}</h1>
-            <h2 itemprop="jobTitle">{defaults.jobTitle}</h2>
 
-            <div class="social">
-              <a itemprop="sameAs" href="https://stackoverflow.com/users/9238321/adam-lacombe" target="_blank" rel="noopener" aria-label="Stack Overflow" title="Stack Overflow">
-                <ion-icon name="logo-stackoverflow" />
-              </a>
-              <a itemprop="sameAs" href="https://github.com/adamlacombe" target="_blank" aria-label="Github" rel="noopener" title="Github">
-                <fa-icon type="fab" name="github" />
-              </a>
-              <a itemprop="sameAs" href="https://dev.to/adamlacombe" target="_blank" aria-label="Dev.to" rel="noopener" title="Dev.to">
-                <fa-icon type="fab" name="dev" />
-              </a>
-              <a itemprop="sameAs" href="https://www.npmjs.com/~adamlacombe" target="_blank" aria-label="npm" rel="noopener" title="npm">
-                <ion-icon name="logo-npm" />
-              </a>
-              <a itemprop="sameAs" href="https://twitter.com/adamlacombe" target="_blank" aria-label="Twitter" rel="noopener" title="Twitter">
-                <fa-icon type="fab" name="twitter" />
-              </a>
-              <a itemprop="sameAs" href="https://facebook.com/adamlacombe" target="_blank" aria-label="Facebook" rel="noopener" title="Facebook">
-                <ion-icon name="logo-facebook" />
-              </a>
-              <a itemprop="sameAs" href="https://www.instagram.com/webdev204/" target="_blank" aria-label="Instagram" rel="noopener" title="Instagram">
-                <ion-icon name="logo-instagram" />
-              </a>
-            </div>
+            <div class="container">
+              <div class="stats-wrapper">
+                <div class="stats-inner">
 
-            <div class="sponsor">
-              <iframe src="https://github.com/sponsors/adamlacombe/button" title="Sponsor adamlacombe" height="35" width="107" style={{ border: '0' }} />
-            </div>
+                  <a href="https://github.com/adamlacombe?tab=repositories&type=source" target="_blank" rel="noopener" aria-label="Repos" title="Repos">
+                    <div>{this.profile.public_repos}</div>
+                    <div>Repos</div>
+                  </a>
+                  <a href="https://gist.github.com/adamlacombe" target="_blank" rel="noopener" aria-label="Gists" title="Gists">
+                    <div>{this.profile.public_gists}</div>
+                    <div>Gists</div>
+                  </a>
+                  <a href="https://github.com/adamlacombe?tab=followers" target="_blank" rel="noopener" aria-label="Followers" title="Followers">
+                    <div>{this.profile.followers}</div>
+                    <div>Followers</div>
+                  </a>
+                  <a href="https://github.com/adamlacombe?tab=following" target="_blank" rel="noopener" aria-label="Following" title="Following">
+                    <div>{this.profile.following}</div>
+                    <div>Following</div>
+                  </a>
 
-            <nav>
-              <ul>
-                <li><a href="/" onClick={(e) => clickRoutableLink(e)}>Home</a></li>
-                <li><a href="/" onClick={(e) => clickRoutableLink(e)}>Blog</a></li>
-              </ul>
-            </nav>
-
-            <div class="stats-wrapper">
-              <div class="stats-inner">
-                <a href="https://github.com/adamlacombe?tab=repositories&type=source" target="_blank" rel="noopener" aria-label="Repos" title="Repos">
-                  <div>{this.profile.public_repos}</div>
-                  <div>Repos</div>
-                </a>
-                <a href="https://gist.github.com/adamlacombe" target="_blank" rel="noopener" aria-label="Gists" title="Gists">
-                  <div>{this.profile.public_gists}</div>
-                  <div>Gists</div>
-                </a>
-                <a href="https://github.com/adamlacombe?tab=followers" target="_blank" rel="noopener" aria-label="Followers" title="Followers">
-                  <div>{this.profile.followers}</div>
-                  <div>Followers</div>
-                </a>
-                <a href="https://github.com/adamlacombe?tab=following" target="_blank" rel="noopener" aria-label="Following" title="Following">
-                  <div>{this.profile.following}</div>
-                  <div>Following</div>
-                </a>
+                </div>
               </div>
             </div>
-          </div>
+          </header>
           <div class="main-body">
             {(!state.menuIsOpen) && <div onClick={() => state.menuIsOpen = true}>
               <ion-icon name="menu-outline" /> Menu

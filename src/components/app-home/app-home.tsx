@@ -28,12 +28,15 @@ export class AppHome {
     return <Host>
       <Helmet>
         <title>{defaults.title}</title>
+        <meta property="og:title" content={defaults.title} />
         <meta name="keywords" content={defaults.keywords} />
         <meta name="description" content={defaults.description} />
         <meta property="og:description" content={defaults.description} />
         <meta name="twitter:description" content={defaults.description} />
         <meta property="og:image" content={defaults.image} />
+        <meta name="twitter:title" content={defaults.title} />
         <meta name="twitter:image" content={defaults.image} />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content="@adamlacombe" />
       </Helmet>
       <script type="application/ld+json">{JSON.stringify(schema)}</script>

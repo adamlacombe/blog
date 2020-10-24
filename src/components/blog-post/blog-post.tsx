@@ -3,7 +3,7 @@ import { Helmet } from '@stencil/helmet';
 import { TechArticle, WithContext } from 'schema-dts';
 import blogContent from '../../assets/blog/list.json';
 import { BlogPostInterface, MarkdownContent } from '../../global/definitions';
-import { toHypertext } from '../../global/helpers';
+import { SHARP_IMAGE_PROXY_URL, toHypertext } from '../../global/helpers';
 import { SCHEMA_ME_ID, SCHEMA_WEBSITE_ID } from '../../global/schema';
 import { state } from '../../global/store';
 
@@ -50,12 +50,15 @@ export class BlogPost {
     return <Host>
       <Helmet>
         <title>{this.content.title}</title>
+        <meta property="og:title" content={this.content.title} />
         <meta name="keywords" content={this.post.tags.join(", ")} />
         <meta name="description" content={this.content.description} />
         <meta property="og:description" content={this.content.description} />
         <meta name="twitter:description" content={this.content.description} />
-        <meta property="og:image" content={this.post.img} />
-        <meta name="twitter:image" content={this.post.img} />
+        <meta property="og:image" content={`${SHARP_IMAGE_PROXY_URL}/?url=${window.location.origin}${this.post.img}&width=1280&height=640`} />
+        <meta name="twitter:title" content={this.content.title} />
+        <meta name="twitter:image" content={`${SHARP_IMAGE_PROXY_URL}/?url=${window.location.origin}${this.post.img}&width=1280&height=640`} />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content="@adamlacombe" />
       </Helmet>
       <script type="application/ld+json">{JSON.stringify(this.structuredData)}</script>

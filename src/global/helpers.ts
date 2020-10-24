@@ -49,3 +49,5 @@ export const toHypertext = (data: any) => {
   }
   return (h as any).apply(null, args);
 };
+
+export const SHARP_IMAGE_PROXY_URL = (window.location.origin.includes("localhost")) ? "http://localhost:8080" : "https://images.adamlacombe.com";

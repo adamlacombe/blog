@@ -30,6 +30,7 @@ export namespace Components {
         "org": IGithubOrg;
     }
     interface RepoCard {
+        "name": string;
         "repo": IGithubRepo;
     }
 }
@@ -117,6 +118,7 @@ declare namespace LocalJSX {
         "org"?: IGithubOrg;
     }
     interface RepoCard {
+        "name"?: string;
         "repo"?: IGithubRepo;
     }
     interface IntrinsicElements {

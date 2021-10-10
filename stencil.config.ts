@@ -30,6 +30,7 @@ export const config: Config = {
   ],
   enableCache: false,
   devServer: {
-    openBrowser: false
+    openBrowser: false,
+    port: 3337
   }
 };

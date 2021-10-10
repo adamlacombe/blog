@@ -1,0 +1,27 @@
+ports:
+  - port: 3337
+    onOpen: open-browser
+
+tasks:
+  - name: bootstrap server
+    before: |
+      nvm install 10
+      nvm use 10
+    init: | 
+      npm install
+    command: |
+      npm run start
+
+vscode:
+  extensions:
+    - christian-kohler.npm-intellisense
+    - eamodio.gitlens
+    - streetsidesoftware.code-spell-checker
+
+github:
+  prebuilds:
+    master: true
+    branches: false
+    pullRequests: false
+    addComment: false
+    addBadge: false

@@ -1,8 +1,8 @@
-name = "worker-typescript-template"
+name = "adam-lacombe-blog"
 type = "javascript"
-zone_id = ""
-account_id = ""
-route = ""
+account_id = "554785ad0977681a495f49050fee896b"
+# routes = ["adamlacombe.com", "adamlacombe.com/blog/*"]
+routes = []
 workers_dev = true
 
 [build]

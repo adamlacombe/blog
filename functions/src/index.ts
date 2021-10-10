@@ -35,7 +35,7 @@ const html = `<!DOCTYPE html>
   <link rel="icon" type="image/png" href="/assets/icon/icon.png">
   <link rel="manifest" href="/manifest.json">
 
-  <script data-ad-client="ca-pub-3681824626260772" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script data-ad-client="ca-pub-9817119432389293" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 
 <body>

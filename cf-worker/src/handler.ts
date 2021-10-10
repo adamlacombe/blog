@@ -1,4 +1,3 @@
-
 class ElementHandler {
   element(element: Element) {
     if (element.tagName === 'iframe') {
@@ -9,8 +8,26 @@ class ElementHandler {
       element.remove();
     }
 
+    if (element.tagName === "script" && element.getAttribute("data-ad-client") === "ca-pub-3681824626260772") {
+      element.setAttribute('data-ad-client', 'ca-pub-9817119432389293');
+      return
+    }
+
+    if (element.tagName === "script" && element.getAttribute("src") === "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js") {
+      return
+    }
+
     if (element.tagName === "script" && (!element.hasAttribute("type") || (element.hasAttribute("type") && element.getAttribute("type") !== "application/ld+json"))) {
       element.remove();
+    }
+  }
+}
+
+class OtherElementHandler {
+  element(element: Element) {
+    if (element.tagName === "script" && element.getAttribute("data-ad-client") === "ca-pub-3681824626260772") {
+      element.setAttribute('data-ad-client', 'ca-pub-9817119432389293');
+      return
     }
   }
 }
@@ -29,7 +46,9 @@ export async function handleRequest(req: Request) {
       .transform(res);
   }
 
-  return res;
+  return new HTMLRewriter()
+    .on("script", new OtherElementHandler())
+    .transform(res);
 }
 
 

@@ -1,5 +1,6 @@
 import { Component, h, Host, Listen, State } from '@stencil/core';
 import { match, Route } from 'stencil-router-v2';
+import blogContent from '../../assets/blog/list.json';
 import profile from '../../assets/github/profile.json';
 import { IGithubProfile } from '../../global/definitions';
 import { clickRoutableLink, defaults, Router, state } from '../../global/store';
@@ -41,7 +42,6 @@ export class AppRoot {
 
               <div class="container">
                 <div class="left-side">
-
                   <div class="about">
                     <div>
                       <a href="/" onClick={(e) => clickRoutableLink(e)}>
@@ -54,13 +54,11 @@ export class AppRoot {
                           itemprop="image" />
                       </a>
                     </div>
-
                     <div>
                       <h1 itemprop="givenName">{defaults.name}</h1>
                       <h2 itemprop="jobTitle">{defaults.jobTitle}</h2>
                     </div>
                   </div>
-
                 </div>
 
                 <div class="right-side">
@@ -86,27 +84,32 @@ export class AppRoot {
                     <a itemprop="sameAs" href="https://www.instagram.com/webdev204/" target="_blank" aria-label="Instagram" rel="noopener" title="Instagram">
                       <ion-icon name="logo-instagram" />
                     </a>
+                    <a itemprop="sameAs" href="https://www.youtube.com/channel/UCiXI3lJmntB9O9Ivoj8kmoA" target="_blank" aria-label="YouTube" rel="noopener" title="YouTube">
+                      <ion-icon name="logo-youtube" />
+                    </a>
+                    <a itemprop="sameAs" href="https://open.spotify.com/artist/0ijyuqEToJvAjx6Qq7BQxB?si=QppfE7dUSXSrEW86un3vrw" target="_blank" aria-label="Spotify" rel="noopener" title="Spotify">
+                      <fa-icon type="fab" name="spotify" />
+                    </a>
                   </div>
                   <div class="sponsor">
                     <iframe src="https://github.com/sponsors/adamlacombe/button" title="Sponsor adamlacombe" height="35" width="107" style={{ border: '0' }} />
                   </div>
-
                 </div>
               </div>
-
-              {/* <nav>
-  <ul>
-    <li><a href="/" onClick={(e) => clickRoutableLink(e)}>Home</a></li>
-    <li><a href="/" onClick={(e) => clickRoutableLink(e)}>Blog</a></li>
-  </ul>
-</nav> */}
-
-
             </div>
 
             <div class="container">
               <div class="stats-wrapper">
                 <div class="stats-inner">
+                  <a href="/" aria-label="Home" title="Home">
+                    <div>&nbsp;</div>
+                    <div>Home</div>
+                  </a>
+
+                  <a href="/blog" aria-label="Blog" title="Blog">
+                    <div>{blogContent.length}</div>
+                    <div>Blog</div>
+                  </a>
 
                   <a href="https://github.com/adamlacombe?tab=repositories&type=source" target="_blank" rel="noopener" aria-label="Repos" title="Repos">
                     <div>{this.profile.public_repos}</div>
@@ -135,6 +138,7 @@ export class AppRoot {
             </div>}
             <Router.Switch>
               <Route path={"/"} render={({ page }) => <app-home />} />
+              <Route path={match('/blog', { exact: true })} render={({ page }) => <page-blog />} />
               <Route path={match('/blog/:page')} render={({ page }) => <blog-post page={`/blog/${page}`} />} />
             </Router.Switch>
           </div>

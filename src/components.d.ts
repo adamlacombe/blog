@@ -29,6 +29,8 @@ export namespace Components {
     interface OrgCard {
         "org": IGithubOrg;
     }
+    interface PageBlog {
+    }
     interface RepoCard {
         "name": string;
         "repo": IGithubRepo;
@@ -77,6 +79,12 @@ declare global {
         prototype: HTMLOrgCardElement;
         new (): HTMLOrgCardElement;
     };
+    interface HTMLPageBlogElement extends Components.PageBlog, HTMLStencilElement {
+    }
+    var HTMLPageBlogElement: {
+        prototype: HTMLPageBlogElement;
+        new (): HTMLPageBlogElement;
+    };
     interface HTMLRepoCardElement extends Components.RepoCard, HTMLStencilElement {
     }
     var HTMLRepoCardElement: {
@@ -91,6 +99,7 @@ declare global {
         "blog-post": HTMLBlogPostElement;
         "highlight-code": HTMLHighlightCodeElement;
         "org-card": HTMLOrgCardElement;
+        "page-blog": HTMLPageBlogElement;
         "repo-card": HTMLRepoCardElement;
     }
 }
@@ -117,6 +126,8 @@ declare namespace LocalJSX {
     interface OrgCard {
         "org"?: IGithubOrg;
     }
+    interface PageBlog {
+    }
     interface RepoCard {
         "name"?: string;
         "repo"?: IGithubRepo;
@@ -129,6 +140,7 @@ declare namespace LocalJSX {
         "blog-post": BlogPost;
         "highlight-code": HighlightCode;
         "org-card": OrgCard;
+        "page-blog": PageBlog;
         "repo-card": RepoCard;
     }
 }
@@ -143,6 +155,7 @@ declare module "@stencil/core" {
             "blog-post": LocalJSX.BlogPost & JSXBase.HTMLAttributes<HTMLBlogPostElement>;
             "highlight-code": LocalJSX.HighlightCode & JSXBase.HTMLAttributes<HTMLHighlightCodeElement>;
             "org-card": LocalJSX.OrgCard & JSXBase.HTMLAttributes<HTMLOrgCardElement>;
+            "page-blog": LocalJSX.PageBlog & JSXBase.HTMLAttributes<HTMLPageBlogElement>;
             "repo-card": LocalJSX.RepoCard & JSXBase.HTMLAttributes<HTMLRepoCardElement>;
         }
     }

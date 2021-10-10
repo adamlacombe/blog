@@ -63,17 +63,19 @@ export class BlogPost {
       <script type="application/ld+json">{JSON.stringify(this.structuredData)}</script>
       <div>
         <article class="post">
-          <div class="image">
-            <al-img src={this.post.img} alt={this.post.title} />
-          </div>
           <div class="container">
             <div class="content">
-              <h1>{this.post.title}</h1>
-              <div>{toHypertext(this.content.hypertext)}</div>
-              <div class="meta">
-                <div>
-                  <ion-icon name="calendar-sharp" />
-                  <time dateTime={new Date(this.post.date).toISOString().split('T')[0]}>{this.post.date}</time>
+              <div class="image">
+                <al-img src={this.post.img} alt={this.post.title} />
+              </div>
+              <div class="inner-content">
+                <h1>{this.post.title}</h1>
+                <div>{toHypertext(this.content.hypertext)}</div>
+                <div class="meta">
+                  <div>
+                    <ion-icon name="calendar-sharp" />
+                    <time dateTime={new Date(this.post.date).toISOString().split('T')[0]}>{this.post.date}</time>
+                  </div>
                 </div>
               </div>
             </div>

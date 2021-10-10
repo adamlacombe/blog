@@ -54,9 +54,9 @@ export class AppHome {
         </p> */}
 
         {(this.posts && this.posts.length > 0) && <article>
-          <h1>Blog Posts</h1>
+          <h1><a href="/blog">Blog Posts</a></h1>
           <div class="posts">
-            {this.posts.map(post => <blog-card post={post} />)}
+            {this.posts.slice(0, 3).map(post => <blog-card post={post} />)}
           </div>
         </article>}
 

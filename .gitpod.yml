@@ -5,8 +5,8 @@ ports:
 tasks:
   - name: bootstrap server
     before: |
-      nvm install 10
-      nvm use 10
+      npm i @cloudflare/wrangler -g
+      touch .env
     init: | 
       npm install
     command: |
@@ -17,6 +17,7 @@ vscode:
     - christian-kohler.npm-intellisense
     - eamodio.gitlens
     - streetsidesoftware.code-spell-checker
+    - bungcip.better-toml
 
 github:
   prebuilds:

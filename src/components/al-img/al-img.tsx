@@ -38,7 +38,7 @@ export class AlImage {
   render() {
     return <Host>
       <picture>
-        {this.types.map(type => this.widths.map(width => <source type={`image/${type.type}`} srcSet={`${this.SHARP_IMAGE_PROXY_URL}/?url=${this.src}&format=${type.type}&quality=${type.quality}&width=${width}`} media={`(max-width: ${width}px)`} />))}
+        {(!window.location.origin.includes('gitpod')) && this.types.map(type => this.widths.map(width => <source type={`image/${type.type}`} srcSet={`${this.SHARP_IMAGE_PROXY_URL}/?url=${this.src}&format=${type.type}&quality=${type.quality}&width=${width}`} media={`(max-width: ${width}px)`} />))}
         <img loading={'lazy'} src={this.src} alt={this.alt} />
       </picture>
     </Host>;

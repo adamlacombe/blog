@@ -6,7 +6,7 @@ author: Adam LaCombe
 twitter: adamlacombe
 description: Pick is a built-in type which allows you to pick specific properties from an interface.
 tags: TypeScript
-img: /assets/blog/images/typescript-how-to-pick-some-properties-from-an-interface/main3.png
+img: /assets/blog/images/typescript-how-to-pick-some-properties-from-an-interface/main4.png
 ---
 
 You can use the built-in type [Pick](https://www.typescriptlang.org/docs/handbook/utility-types.html#picktype-keys). `Pick<MyInterface, "prop1" | "prop2">` is a built-in type which allows you to pick specific properties from an interface.

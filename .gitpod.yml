@@ -1,0 +1,28 @@
+ports:
+  - port: 3337
+    onOpen: open-browser
+
+tasks:
+  - name: bootstrap server
+    before: |
+      npm i @cloudflare/wrangler -g
+      touch .env
+    init: | 
+      npm install
+    command: |
+      npm run start
+
+vscode:
+  extensions:
+    - christian-kohler.npm-intellisense
+    - eamodio.gitlens
+    - streetsidesoftware.code-spell-checker
+    - bungcip.better-toml
+
+github:
+  prebuilds:
+    master: true
+    branches: false
+    pullRequests: false
+    addComment: false
+    addBadge: false

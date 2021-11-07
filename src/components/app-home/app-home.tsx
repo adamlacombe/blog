@@ -40,7 +40,7 @@ export class AppHome {
         <meta name="twitter:creator" content="@adamlacombe" />
       </Helmet>
       <script type="application/ld+json">{JSON.stringify(schema)}</script>
-      <div class='app-home'>
+      <div class='app-home container'>
         {/* <p>
           <img src="https://img.shields.io/badge/-JavaScript-black?style=for-the-badge&logo=javascript" alt="Javascript" />
           <img src="https://img.shields.io/badge/-Typescript-294E80?style=for-the-badge&&logo=typescript" alt="Typescript" />
@@ -54,9 +54,9 @@ export class AppHome {
         </p> */}
 
         {(this.posts && this.posts.length > 0) && <article>
-          <h1>Blog Posts</h1>
+          <h1><a href="/blog">Blog Posts</a></h1>
           <div class="posts">
-            {this.posts.map(post => <blog-card post={post} />)}
+            {this.posts.slice(0, 3).map(post => <blog-card post={post} />)}
           </div>
         </article>}
 

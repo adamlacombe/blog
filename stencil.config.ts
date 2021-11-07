@@ -14,6 +14,16 @@ export const config: Config = {
       serviceWorker: {
         unregister: true
       },
+      copy: [
+        {
+          src: 'feed.xml',
+          dest: 'feed/feed.xml'
+        },
+        {
+          src: 'ads.txt',
+          dest: 'ads.txt'
+        }
+      ]
     },
     {
       type: 'dist-hydrate-script',
@@ -30,6 +40,7 @@ export const config: Config = {
   ],
   enableCache: false,
   devServer: {
-    openBrowser: false
+    openBrowser: false,
+    port: 3337
   }
 };

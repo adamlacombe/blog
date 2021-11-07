@@ -1,0 +1,11 @@
+name = "adam-lacombe-blog"
+type = "javascript"
+account_id = "554785ad0977681a495f49050fee896b"
+# routes = ["adamlacombe.com", "adamlacombe.com/blog/*"]
+routes = []
+workers_dev = true
+
+[build]
+command = "npm install && npm run build"
+[build.upload]
+format = "service-worker"

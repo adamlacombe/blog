@@ -14,30 +14,76 @@ h2 {
   border: 3px solid #fff;
   border-radius: 300px;
   width: 100%;
-  max-width: 180px;
+  max-width: 130px;
+}
+
+.about {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+
+  h2 {
+    font-size: 1em;
+    font-weight: normal;
+    margin-top: 0.2em;
+  }
+}
+
+.sponsor {
+  // position: relative;
+  // bottom: -12px;
 }
 
 .wrapper {
-  display: grid;
-  grid-template-columns: 1fr;
+  // display: grid;
+  // grid-template-columns: 1fr;
 
-  width: 100%;
+  // width: 100%;
+}
+
+header {
+  background: #fff;
+  border-bottom: 1px solid #cccccc85;
+  overflow: hidden;
+
+  box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.5);
 }
 
 .header {
-  display: none;
+  //display: none;
 
-  position: relative;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5em;
+  //position: relative;
+  //flex-direction: column;
+  //justify-content: center;
+  //align-items: center;
+  //gap: 0.5em;
 
   color: #fff;
 
   background: linear-gradient(#9c0886, #0008ffad);
   background-size: 200% 200%;
   animation: AnimationName 33s ease infinite;
+
+  .container {
+    display: flex;
+    //gap: 1.5em;
+    align-items: flex-end;
+    height: 100%;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    .left-side {
+      padding: 1em 1em 0em 1em;
+    }
+
+    .right-side {
+      display: flex;
+      gap: 1em;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
 }
 
 @keyframes AnimationName {
@@ -54,6 +100,10 @@ h2 {
 
 .social {
   display: flex;
+  gap: 0.5em;
+  margin-bottom: 0.15em;
+  flex-wrap: wrap;
+  justify-content: center;
 
   a {
     color: #fff;
@@ -81,23 +131,26 @@ fa-icon {
 .stats-wrapper {
   position: relative;
 
-  background: rgb(0 0 0 / 21%);
+  //background: rgb(0 0 0 / 21%);
   width: 100%;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
 
-  border-top: 1px solid rgb(0 0 0 / 57%);
+  //border-top: 1px solid rgb(0 0 0 / 57%);
 }
 
 .stats-inner {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   text-align: center;
-  gap: 1em;
+  
 
   padding-left: 1em;
   padding-right: 1em;
+
+  gap: 1em;
+  justify-content: space-between;
+  flex-wrap: wrap;
 
   > a {
     display: block;
@@ -147,25 +200,48 @@ nav {
   }
 }
 
-:host(.menu-open) {
-  .header {
-    display: flex;
-  }
+.main-body {
+  //margin-top: 30px;
 }
 
-@media only screen and (min-width: 763px) {
-  .wrapper {
-    grid-template-columns: minmax(250px, 350px) 1fr;
-    min-height: 100vh;
+// :host(.menu-open) {
+//   .header {
+//     display: flex;
+//   }
+// }
+
+@media only screen and (min-width: 991px) {
+  // .wrapper {
+  //   grid-template-columns: minmax(250px, 350px) 1fr;
+  //   min-height: 100vh;
+  // }
+
+  // .main-body {
+  //   height: 100vh;
+  //   overflow: auto;
+  // }
+
+  // .stats-wrapper {
+  //   position: absolute;
+  //   bottom: 0;
+  // }
+
+  .header {
+    .container {
+      justify-content: space-between;
+
+      .left-side {
+        margin-top: auto;
+        position: relative;
+        bottom: -24px;
+
+        padding: 0px;
+      }
+    }
   }
 
-  .main-body {
-    height: 100vh;
-    overflow: auto;
-  }
-
-  .stats-wrapper {
-    position: absolute;
-    bottom: 0;
+  .stats-inner {
+    justify-content: flex-end;
+    gap: 5em;
   }
 }

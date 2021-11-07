@@ -13,11 +13,11 @@ export class BlogCard {
 
   render() {
     if (!this.post) return;
-    
+
     return <Host>
       <div class="wrap">
         <div>
-          <al-img src={this.post.img} alt={`${this.post.title}`} />
+          <a href={this.post.url} onClick={(e) => clickRoutableLink(e)} itemprop="url"><al-img src={this.post.img} alt={`${this.post.title}`} /></a>
         </div>
         <div class="body">
           <div class="name" itemprop="name">

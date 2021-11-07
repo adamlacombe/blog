@@ -1,0 +1,46 @@
+
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:media="http://search.yahoo.com/mrss/" xmlns:webfeeds="http://webfeeds.org/rss/1.0" version="2.0">
+  <channel>
+    <title>Adam LaCombe's blog</title>
+    <webfeeds:analytics id="UA-174664641-1" engine="GoogleAnalytics"/>
+    <atom:link href="https://adamlacombe.com/feed/feed.xml" rel="self" type="application/rss+xml"/>
+    <link>https://adamlacombe.com</link>
+    <updated>2020-09-09T00:00:00-00:00</updated>
+    <id>https://adamlacombe.com</id>
+    <language>en-US</language>
+    <sy:updatePeriod>hourly</sy:updatePeriod>
+    <sy:updateFrequency>1</sy:updateFrequency>
+    <item>
+      <title>How to sort an array alphabetically</title>
+      <link>https://adamlacombe.com/blog/how-to-sort-an-array-alphabetically</link>
+      <pubDate>2020-10-25T00:00:00.000Z</pubDate>
+      <dc:creator>Adam LaCombe</dc:creator>
+      <guid isPermaLink="false">https://adamlacombe.com/blog/how-to-sort-an-array-alphabetically</guid>
+      <content:encoded><![CDATA[ <img src="https://adamlacombe.com/assets/blog/images/how-to-sort-an-array-alphabetically/CoverImage.png" />Learn the best method for sorting an array alphabetically. ]]></content:encoded>
+    </item>
+<item>
+      <title>How to pick properties from an interface</title>
+      <link>https://adamlacombe.com/blog/typescript-how-to-pick-properties-from-an-interface</link>
+      <pubDate>2020-10-15T00:00:00.000Z</pubDate>
+      <dc:creator>Adam LaCombe</dc:creator>
+      <guid isPermaLink="false">https://adamlacombe.com/blog/typescript-how-to-pick-properties-from-an-interface</guid>
+      <content:encoded><![CDATA[ <img src="https://adamlacombe.com/assets/blog/images/typescript-how-to-pick-some-properties-from-an-interface/main4.png" />Pick is a built-in type which allows you to pick specific properties from an interface. ]]></content:encoded>
+    </item>
+<item>
+      <title>How to convert images to AVIF in NodeJS</title>
+      <link>https://adamlacombe.com/blog/how-to-convert-images-to-avif-in-nodejs</link>
+      <pubDate>2020-09-07T00:00:00.000Z</pubDate>
+      <dc:creator>Adam LaCombe</dc:creator>
+      <guid isPermaLink="false">https://adamlacombe.com/blog/how-to-convert-images-to-avif-in-nodejs</guid>
+      <content:encoded><![CDATA[ <img src="https://adamlacombe.com/assets/blog/images/how-to-convert-images-to-avif-in-nodejs/main.png" />AVIF is the latest next-gen image compression format. Learn how to convert images to AVIF using the Sharp library. ]]></content:encoded>
+    </item>
+<item>
+      <title>Introduction to Docker</title>
+      <link>https://adamlacombe.com/blog/introduction-to-docker</link>
+      <pubDate>2020-08-28T00:00:00.000Z</pubDate>
+      <dc:creator>Adam LaCombe</dc:creator>
+      <guid isPermaLink="false">https://adamlacombe.com/blog/introduction-to-docker</guid>
+      <content:encoded><![CDATA[ <img src="https://adamlacombe.com/assets/blog/images/introduction-to-docker/docker-commands.jpg" />This is a basic introduction to Docker. You'll learn what docker is, how to install it, build images and run containers. ]]></content:encoded>
+    </item>
+  </channel>
+</rss>
